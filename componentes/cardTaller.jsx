@@ -4,7 +4,7 @@ import { preLoader, extracto } from "../librerias/libreriaApp.jsx";
 import { borrarTaller, traerTalleres } from "../librerias/libreriaTalleres.jsx";
 import { Button } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
-//import Contacto from '../contacto.jsx';
+import Contacto from './contacto.jsx';
 
 export default function Card(props) {
 
@@ -56,7 +56,7 @@ export default function Card(props) {
     if (props.tipo === "unaCard") {
         tituloCard = "tituloCardGrande";
         claseContenedor = "contenedorImagenGrande";
-        //zonaContacto = <Contacto />
+        zonaContacto = <Contacto />
         zonaDescripcion = datos.descripcion;
     } else {
         tituloCard = "tituloCard";
