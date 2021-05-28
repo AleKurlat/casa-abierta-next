@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { preLoader, urlImgDestacada } from "../librerias/libreriaApp.jsx";
 import Card from '../componentes/cardTaller.jsx';
-import CardImagen from "../componentes/CardImagen.jsx";
-import CardEvento from "../componentes/CardEvento.jsx";
+import CardImagen from "../componentes/cardImagen.jsx";
+import CardEvento from "../componentes/cardEvento.jsx";
 //import AltaDestacados from "./AltaDestacados";
 import { useSelector, useDispatch } from 'react-redux';
 import { traerEventos } from "../librerias/libreriaEventos.jsx";
