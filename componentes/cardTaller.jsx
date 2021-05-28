@@ -5,6 +5,7 @@ import { borrarTaller, traerTalleres } from "../librerias/libreriaTalleres.jsx";
 import { Button } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Contacto from './contacto.jsx';
+//import EditarDestacado from '../destacados/EditarDestacado.jsx';
 
 export default function Card(props) {
 
