@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
 import Card from '../../../componentes/cardTaller.jsx';
 import { traerUnTaller } from "../../../librerias/libreriaTalleres.jsx";
 import Head from 'next/head';
