@@ -15,7 +15,6 @@ function MyApp({ Component, pageProps }) {
           <title>Centro Cultural Casa Abierta</title>
           <meta name="description" content="Centro Cultural Casa Abierta. Saavedra, C.A.B.A." />
           <link rel="icon" href="/favicon.png" />
-          <meta property="og:type" content="article" />
           <meta property="og:url" content="https://casaabierta.herokuapp.com/" />
           <meta property="og:site_name" content="Centro Cultural Casa Abierta" />
           <meta name="twitter:title" content="Centro Cultural Casa Abierta" />
