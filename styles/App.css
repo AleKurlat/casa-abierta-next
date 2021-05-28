@@ -1,0 +1,152 @@
+#__next {
+  display: flex;
+  justify-content: center;
+}
+
+#contenedor{
+  display:flex;
+  flex-direction: column;
+}
+
+#principal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#encabezado{
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  align-items: center;
+}
+
+.zonaAdmin{
+  margin-bottom: 7px;
+    padding: 10px;
+    padding-left:30px;
+    padding-right:30px;
+    background-color: rgb(247, 249, 250);
+    border-radius:10px;
+    border: 1px solid rgb(235, 238, 240);
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+footer{
+  padding: 10px;
+  background-color: rgb(247, 249, 250);
+  border-radius:10px;
+  border: 1px solid rgb(235, 238, 240);
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  align-items: center;
+  text-align:center;
+}
+
+#altaDestacados{
+  text-align: center;
+  margin-bottom: 7px;
+}
+
+.info{
+  margin-right: 20px;
+}
+
+.card2 {
+  margin:15px;
+  padding:20px;
+  border: 1px solid rgb(235, 238, 240);
+  font-size:18px;
+  overflow-wrap: break-word;
+  background-color: rgb(247, 249, 250);
+  border-radius:10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow:1;
+  max-width: 500px;
+}
+
+.tituloCard {
+  width: 300px;
+  text-align: center;
+  color: #cf4444;
+}
+
+.tituloCardGrande {
+  text-align: center;
+  color: #cf4444;
+}
+
+textarea{
+  margin:5px;
+}
+
+.contenedorImagen{
+  max-width: 300px;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+.contenedorImagenGrande{
+  max-width: 600px;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+
+img {
+  max-width: 100%;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.preLoader{
+  text-align: center;
+}
+
+.cartel {
+  text-align: center;
+}
+
+.nav{
+  background-color: rgb(247, 249, 250);
+  border-radius:10px;
+  border: 1px solid rgb(235, 238, 240);
+}
+
+.botoneraCard {
+  width:300px;
+}
+
+select {
+  appearance: auto!important;
+  width:auto!important;
+  min-width: 200px;
+}
+
+@media (min-width:1000px) {
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .card2:nth-child(odd):last-child {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #contenedor{
+    width: 80%;
+  }
+}
