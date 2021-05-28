@@ -42,7 +42,7 @@ export default function Card(props) {
         botones =
             <div className="botoneraCard d-flex flex-row flex-wrap">
                 <div className="flex-grow-1">
-                    <Button className="flex-grow-1 w-100" color="primary" tag={Link} to={rutaTaller}>Ver información del taller</Button>
+                    <Button className="flex-grow-1 w-100" color="primary" tag={Link} href={rutaTaller}>Ver información del taller</Button>
                 </div>
                 {zonaAdmin}
             </div>
