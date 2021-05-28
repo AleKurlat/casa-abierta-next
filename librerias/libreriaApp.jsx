@@ -35,3 +35,5 @@ export function extracto(descripcion) {
     const parte = descripcion.substring(0, 50);
     return (parte + " (...)");
 }
+
+export const urlImgDestacada = "";

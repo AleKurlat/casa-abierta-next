@@ -37,8 +37,8 @@ export default function Principal(props) {
                 <Nav pills className="nav nav-fill w-100">
                     <NavLink tag={RRNavLink} className="p-2 flex-grow-1" href="/" exact="true">Inicio</NavLink>
                     <NavLink tag={RRNavLink} className="p-2 flex-grow-1" href="/talleres/talleres">Talleres</NavLink>
-                    <NavLink tag={RRNavLink} className="p-2 flex-grow-1" href="/eventos">Eventos</NavLink>
-                    <NavLink tag={RRNavLink} className="p-2 flex-grow-1" href="/galeria">Galería</NavLink>
+                    <NavLink tag={RRNavLink} className="p-2 flex-grow-1" href="/eventos/eventos">Eventos</NavLink>
+                    <NavLink tag={RRNavLink} className="p-2 flex-grow-1" href="/galeria/galeria">Galería</NavLink>
                     <NavLink tag={RRNavLink} className="p-2 flex-grow-1" href="/nosotrxs">Nosotrxs</NavLink>
                     <NavLink href="https://www.instagram.com/saavedracasaabierta/" className="align-self-center" target="_blank" rel="noopener noreferrer"><img className="me-1" src="/ig50.png" alt="social media" style={{ width: "30px" }} />Instagram</NavLink>
                 </Nav>

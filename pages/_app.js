@@ -7,7 +7,6 @@ import Principal from "../componentes/principal";
 import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
-  const urlImgDestacada = "";
 
   return (
     <Provider store={store}>
@@ -17,14 +16,10 @@ function MyApp({ Component, pageProps }) {
           <meta name="description" content="Centro Cultural Casa Abierta. Saavedra, C.A.B.A." />
           <link rel="icon" href="/favicon.png" />
           <meta property="og:type" content="article" />
-          <meta property="og:title" content="Centro Cultural Casa Abierta" />
-          <meta property="og:description" content="Centro Cultural Casa Abierta. Saavedra, C.A.B.A." />
-          <meta property="og:image" content={urlImgDestacada} />
           <meta property="og:url" content="https://casaabierta.herokuapp.com/" />
           <meta property="og:site_name" content="Centro Cultural Casa Abierta" />
           <meta name="twitter:title" content="Centro Cultural Casa Abierta" />
           <meta name="twitter:description" content="Centro Cultural Casa Abierta. Saavedra, C.A.B.A." />
-          <meta name="twitter:image" content={urlImgDestacada} />
         </Head>
         <Component {...pageProps} />
       </Principal>

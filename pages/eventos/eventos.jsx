@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from "react";
 import CardEvento from '../../componentes/cardEvento.jsx';
 import { Link } from 'next/link';
-import { preLoader } from "../../librerias/libreriaApp.jsx";
+import { preLoader, urlImgDestacada } from "../../librerias/libreriaApp.jsx";
 import { traerEventos } from "../../librerias/libreriaEventos.jsx";
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'reactstrap';
+import Head from 'next/head';
 
 export default function Eventos(props) {
     const [statePreLoader, preLoaderOn] = useState(false);
@@ -47,6 +48,16 @@ export default function Eventos(props) {
 
     return (
         <>
+            <Head>
+                <title>Eventos en Casa Abierta</title>
+                <meta name="description" content="Eventos en el Centro Cultural Casa Abierta" />
+                <meta property="og:title" content="Eventos en Casa Abierta" />
+                <meta property="og:description" content="Eventos en el Centro Cultural Casa Abierta" />
+                <meta name="twitter:title" content="Eventos en Casa Abierta" />
+                <meta name="twitter:description" content="Eventos en el Centro Cultural Casa Abierta" />
+                <meta property="og:image" content={urlImgDestacada} />
+                <meta name="twitter:image" content={urlImgDestacada} />
+            </Head>
             {zonaAdmin}
             {zonaPreLoader}
             <section id="listadoEventos">
