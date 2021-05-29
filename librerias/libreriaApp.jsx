@@ -36,4 +36,4 @@ export function extracto(descripcion) {
     return (parte + " (...)");
 }
 
-export const urlImgDestacada = "";
+export const urlImgDestacada = "https://casaabierta.herokuapp.com/logo3.svg";
