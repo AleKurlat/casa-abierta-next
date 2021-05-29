@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import Card from '../../componentes/cardTaller.jsx';
+import { Link } from 'next/link';
 import { preLoader, urlImgDestacada } from "../../librerias/libreriaApp.jsx";
 import { traerTalleres } from "../../librerias/libreriaTalleres.jsx";
 import { useSelector, useDispatch } from 'react-redux';
 import { Button } from 'reactstrap';
-import Link from 'next/link';
 import Head from 'next/head';
 
 export default function Talleres(props) {
@@ -13,6 +13,7 @@ export default function Talleres(props) {
     const listadoTalleres = useSelector((estado) => estado.talleres);
     const token = useSelector((estado) => estado.token);
     const dispatch = useDispatch();
+    const [zonaAdmin, setZonaAdmin] = useState();
 
     async function traerDatos() {
         preLoaderOn(true);
@@ -24,14 +25,17 @@ export default function Talleres(props) {
     }
 
     useEffect(traerDatos, []);
+    useEffect(() => {
+        if (token) {
+            let barraAdmin = <Button color="primary" tag={Link} className="p-3" href="/talleres/agregar">Agregar nuevo taller</Button>
+            setZonaAdmin(barraAdmin);
+        }
+    }, [token]);
 
     let zonaPreLoader;
     if (statePreLoader) { zonaPreLoader = preLoader };
 
-    let zonaAdmin;
-    if (token) {
-        zonaAdmin = <Button color="primary" className="p-3" tag={Link} to="/talleres/agregar">Agregar nuevo taller</Button>
-    }
+
 
     let zonaListado;
     if (listadoTalleres) {

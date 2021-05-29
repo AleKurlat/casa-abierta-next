@@ -1,30 +1,29 @@
-
 import { useSelector, useDispatch } from 'react-redux';
 import { Nav, NavLink, Button } from 'reactstrap';
-//import logo2 from "./imagenes/logo2bis.svg";
-//import logo3 from "./imagenes/logo3.svg";
-//import ig from "./imagenes/ig50.png";
-//import fb from "./imagenes/fb.png";
-//import gmail from "./imagenes/gmail.png";
-//import yt from "./imagenes/yt.png";
 import { Link as RRNavLink } from 'next/link';
+import React, { useState, useEffect } from "react";
 
 export default function Principal(props) {
     const usuario = useSelector((estado) => estado.usuario);
     const dispatch = useDispatch();
+    const [zonaAdmin, setZonaAdmin] = useState();
 
     function desloguear() {
         dispatch({ type: 'GUARDAR_TOKEN', token: "" });
+        setZonaAdmin();
     }
 
-    let zonaAdmin;
-    if (usuario.usuario) {
-        zonaAdmin =
-            <div className="zonaAdmin">
-                <h5 className="info">Bienvenidx {usuario.usuario}</h5>
-                <Button className="boton" color="primary" onClick={desloguear}>Cerrar sesión</Button>
-            </div>
-    }
+    useEffect(() => {
+        if (usuario.usuario) {
+            let barraAdmin =
+                <div className="zonaAdmin">
+                    <h5 className="info">Bienvenidx {usuario.usuario}</h5>
+                    <Button className="boton" color="primary" onClick={desloguear}>Cerrar sesión</Button>
+                </div>
+            setZonaAdmin(barraAdmin);
+        }
+    }, [usuario]);
+
     return (
         <div id="contenedor">
             <header id="encabezado">
@@ -48,7 +47,7 @@ export default function Principal(props) {
                 {props.children}
             </main>
             <footer>
-                <Button className="my-2" color="primary" tag={RRNavLink} to="/adminLogin">Ingresar</Button>
+                <Button className="my-2" color="primary" tag={RRNavLink} href="/admins/adminLogin">Ingresar</Button>
                 <div >
                     <h5 style={{ color: "#cf4444" }}>Centro Cultural Casa Abierta</h5>
                     <h6>Saavedra, C.A.B.A.</h6>

@@ -5,7 +5,7 @@ import { borrarTaller, traerTalleres } from "../librerias/libreriaTalleres.jsx";
 import { Button } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Contacto from './contacto.jsx';
-//import EditarDestacado from '../destacados/EditarDestacado.jsx';
+import EditarDestacado from './editarDestacado.jsx';
 
 export default function Card(props) {
 
@@ -34,7 +34,7 @@ export default function Card(props) {
     if (token && props.tipo === "listado") {
         zonaAdmin =
             <div className="botoneraCard d-flex flex-row mt-2">
-                <Button className="me-2 flex-grow-1" color="primary" tag={Link} to={rutaTaller + "/editar"}>Editar</Button>
+                <Button className="me-2 flex-grow-1" color="primary" tag={Link} href={rutaTaller + "/editar"}>Editar</Button>
                 <Button className="flex-grow-1" color="danger" onClick={borrado}>Eliminar</Button>
             </div>
     }
@@ -68,6 +68,7 @@ export default function Card(props) {
 
     let zonaDestacados;
     if (props.tipo === "editarDestacados" && token) {
+        zonaDestacados = <EditarDestacado i={props.i} />
     }
 
     let zonaPreLoader;

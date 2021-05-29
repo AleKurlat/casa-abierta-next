@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'next/link';
 import { preLoader, extracto } from "../librerias/libreriaApp.jsx";
 import { borrarImagen, traerImagenes } from "../librerias/libreriaImagenes.jsx";
-//import EditarDestacado from '../destacados/EditarDestacado.jsx';
+import EditarDestacado from './editarDestacado.jsx';
 import { Button } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Contacto from './contacto.jsx';

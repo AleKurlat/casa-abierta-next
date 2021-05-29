@@ -5,7 +5,7 @@ import { preLoader, urlImgDestacada } from "../librerias/libreriaApp.jsx";
 import Card from '../componentes/cardTaller.jsx';
 import CardImagen from "../componentes/cardImagen.jsx";
 import CardEvento from "../componentes/cardEvento.jsx";
-//import AltaDestacados from "./AltaDestacados";
+import AltaDestacados from "../componentes/altaDestacados";
 import { useSelector, useDispatch } from 'react-redux';
 import { traerEventos } from "../librerias/libreriaEventos.jsx";
 import { traerTalleres } from "../librerias/libreriaTalleres.jsx";

@@ -13,6 +13,7 @@ export default function Galeria(props) {
     const listadoImagenes = useSelector((estado) => estado.imagenes);
     const token = useSelector((estado) => estado.token);
     const dispatch = useDispatch();
+    const [zonaAdmin, setZonaAdmin] = useState();
 
     async function traerDatos() {
         preLoaderOn(true);
@@ -22,14 +23,15 @@ export default function Galeria(props) {
     }
 
     useEffect(traerDatos, []);
+    useEffect(() => {
+        if (token) {
+            let barraAdmin = <Button color="primary" tag={Link} className="p-3" href="/galeria/agregar">Agregar nueva imagen</Button>
+            setZonaAdmin(barraAdmin);
+        }
+    }, [token]);
 
     let zonaPreLoader;
     if (statePreLoader) { zonaPreLoader = preLoader };
-
-    let zonaAdmin;
-    if (token) {
-        zonaAdmin = <Button color="primary" tag={Link} className="p-3" to="/galeria/agregar">Agregar nueva imagen</Button>
-    }
 
     let zonaListado;
     if (listadoImagenes) {

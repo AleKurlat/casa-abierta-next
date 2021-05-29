@@ -13,6 +13,7 @@ export default function Eventos(props) {
     const listadoEventos = useSelector((estado) => estado.eventos);
     const token = useSelector((estado) => estado.token);
     const dispatch = useDispatch();
+    const [zonaAdmin, setZonaAdmin] = useState();
 
     async function traerDatos() {
         preLoaderOn(true);
@@ -24,16 +25,15 @@ export default function Eventos(props) {
     }
 
     useEffect(traerDatos, []);
+    useEffect(() => {
+        if (token) {
+            let barraAdmin = <Button color="primary" tag={Link} className="p-3" href="/eventos/altaEvento">Agregar nuevo evento</Button>
+            setZonaAdmin(barraAdmin);
+        }
+    }, [token]);
 
     let zonaPreLoader;
-    if (statePreLoader) {
-        zonaPreLoader = preLoader;
-    }
-
-    let zonaAdmin;
-    if (token) {
-        zonaAdmin = <Button color="primary" tag={Link} className="p-3" to="/eventos/agregar">Agregar nuevo evento</Button>
-    }
+    if (statePreLoader) { zonaPreLoader = preLoader }
 
     let zonaListado;
     if (listadoEventos) {

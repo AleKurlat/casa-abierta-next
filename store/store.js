@@ -3,12 +3,14 @@ import { createStore } from 'redux';
 let iniciarToken = "";
 let iniciarUsuario = {};
 
-/*if (localStorage.getItem("token")) {
-    iniciarToken = localStorage.getItem("token");
-    const base64Url = iniciarToken.split('.')[1];
-    const base64Decode = Buffer.from(base64Url, "base64");
-    iniciarUsuario = JSON.parse(base64Decode);
-};*/
+if (typeof window !== "undefined") {
+    if (localStorage.getItem("token")) {
+        iniciarToken = localStorage.getItem("token");
+        const base64Url = iniciarToken.split('.')[1];
+        const base64Decode = Buffer.from(base64Url, "base64");
+        iniciarUsuario = JSON.parse(base64Decode);
+    }
+}
 
 const estadoInicial = {
     token: iniciarToken,
@@ -22,7 +24,7 @@ function reducer(state = estadoInicial, action) {
     switch (action.type) {
 
         case 'GUARDAR_TOKEN':
-            //localStorage.setItem("token", action.token);
+            if (typeof window !== "undefined") { localStorage.setItem("token", action.token); }
             nuevoEstado.token = action.token;
             if (action.token) {
                 const base64Url = action.token.split('.')[1];

@@ -5,7 +5,7 @@ import { borrarEvento, traerEventos } from "../librerias/libreriaEventos.jsx";
 import { Button } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Contacto from './contacto.jsx';
-//import EditarDestacado from '../destacados/EditarDestacado.jsx';
+import EditarDestacado from './editarDestacado.jsx';
 
 export default function CardEvento(props) {
 
@@ -43,7 +43,7 @@ export default function CardEvento(props) {
     if (token && props.tipo === "listado") {
         zonaAdmin =
             <div className="botoneraCard d-flex flex-row mt-2">
-                <Button className="me-2 flex-grow-1" color="primary" tag={Link} to={rutaEvento + "/editar"}>Editar</Button>
+                <Button className="me-2 flex-grow-1" color="primary" tag={Link} href={rutaEvento + "/editar"}>Editar</Button>
                 <Button className="flex-grow-1" color="danger" onClick={borrado}>Eliminar</Button>
             </div>
     }
