@@ -36,4 +36,4 @@ export function extracto(descripcion) {
     return (parte + " (...)");
 }
 
-export const urlImgDestacada = "https://i.ibb.co/5v7RqWF/logo3.png";
+export const urlImgDestacada = "https://i.ibb.co/ZHW5YJB/logo-casa-abierta.png";
