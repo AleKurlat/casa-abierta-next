@@ -27,7 +27,7 @@ export default function Talleres(props) {
     useEffect(traerDatos, []);
     useEffect(() => {
         if (token) {
-            let barraAdmin = <Button color="primary" tag={Link} className="p-3" href="/talleres/agregar">Agregar nuevo taller</Button>
+            let barraAdmin = <Button color="primary" tag={Link} className="p-3" href="/talleres/altaTaller">Agregar nuevo taller</Button>
             setZonaAdmin(barraAdmin);
         }
     }, [token]);
