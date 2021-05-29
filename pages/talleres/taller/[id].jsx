@@ -7,13 +7,11 @@ export async function getServerSideProps(context) {
     const id = context.params.id;
     const datosCard = await traerUnTaller(id);
 
-    /*
     if (!datosCard) {
         return {
             notFound: true,
         }
     }
-    */
 
     return {
         props: { datosCard }, // will be passed to the page component as props
