@@ -7,11 +7,13 @@ export async function getServerSideProps(context) {
     const id = context.params.id;
     const datosCard = await traerUnTaller(id);
 
+    /*
     if (!datosCard) {
         return {
             notFound: true,
         }
     }
+    */
 
     return {
         props: { datosCard }, // will be passed to the page component as props
@@ -25,6 +27,8 @@ export default function UnTaller({ datosCard }) {
         zonaCard = <section id={"unaCard"}>
             <Card datosCard={datosCard} tipo="unaCard" />
         </section>
+    } else {
+        zonaCard = <div>Error al obtener datos del servidor</div>
     }
 
     return (
