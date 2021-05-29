@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { preLoader } from "../librerias/libreriaApp.jsx";
+import { preLoader } from "../../librerias/libreriaApp.jsx";
 import { useSelector } from 'react-redux';
-import { registrarAdmin } from "../librerias/libreriaAdmins.jsx";
+import { registrarAdmin } from "../../librerias/libreriaAdmins.jsx";
 import { Form, FormGroup, Input, Button, Label } from 'reactstrap';
+import { useRouter } from 'next/router';
+import swal from 'sweetalert';
 
 export default function Registro(props) {
 
@@ -15,6 +17,7 @@ export default function Registro(props) {
     const [statePreLoader, preLoaderOn] = useState(false);
     const token = useSelector((estado) => estado.token);
     const autorizacion = { headers: { Authorization: token } };
+    const router = useRouter();
 
     function cambiarValorInput(e) {
         setObjRegistro({ ...objRegistro, [e.target.name]: e.target.value });
@@ -26,8 +29,8 @@ export default function Registro(props) {
         const resultadoOp = await registrarAdmin(objRegistro, autorizacion);
         preLoaderOn(false);
         if (resultadoOp && resultadoOp !== 403) {
-            alert("Usuario guardado correctamente");
-            props.history.push("/");
+            swal("Usuario guardado correctamente");
+            router.push("/");
         }
     }
 
