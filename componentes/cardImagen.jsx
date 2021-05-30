@@ -70,6 +70,7 @@ export default function CardImagen(props) {
         zonaContacto = <Contacto />
         zonaDescripcion = datos.descripcion;
         tamañoCard = "cardGrande";
+        botones = <Link href="/galeria/galeria" ><Button className="flex-grow-1 w-100" color="primary">Volver a galería</Button></Link>
     } else {
         tituloCard = "tituloCard";
         claseContenedor = "contenedorImagen";
