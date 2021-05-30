@@ -89,7 +89,7 @@ export default function CardEvento(props) {
     return (
         <article className={"card2 " + tamañoCard} id={datos.id}>
             <div className={textoCard}>
-                <div><h2 className={tituloCard}>{datos.nombre}</h2></div>
+                <Link href={rutaEvento}><a style={{ textDecoration: "none" }}><h2 className={tituloCard}>{datos.nombre}</h2></a></Link>
                 <div className="text-center">
                     <h5>{dia}</h5>
                     <h6>{horas}</h6>
