@@ -88,6 +88,7 @@ export default function Home(props) {
         <meta property="og:description" content="Centro Cultural Casa Abierta. Saavedra, C.A.B.A." />
         <meta property="og:image" content={urlImgDestacada} />
         <meta name="twitter:image" content={urlImgDestacada} />
+        <meta property="og:url" content="https://casaabierta.vercel.app" />
       </Head>
       {zonaAdmin}
       {zonaPreLoader}
