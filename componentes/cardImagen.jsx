@@ -53,6 +53,8 @@ export default function CardImagen(props) {
     let zonaDescripcion;
     let tituloCard;
     let zonaContacto;
+    let textoCard;
+    let tamañoCard = "";
 
     let zonaDestacados;
     if (props.tipo === "editarDestacados" && token) {
@@ -67,15 +69,17 @@ export default function CardImagen(props) {
         claseContenedor = "contenedorImagenGrande";
         zonaContacto = <Contacto />
         zonaDescripcion = datos.descripcion;
+        tamañoCard = "cardGrande";
     } else {
         tituloCard = "tituloCard";
         claseContenedor = "contenedorImagen";
         zonaDescripcion = extracto(datos.descripcion);
+        textoCard = "textoCard";
     }
 
     return (
-        <article className="card2" id={datos.id}>
-            <div>
+        <article className={"card2 " + tamañoCard} id={datos.id}>
+            <div className={textoCard}>
                 <div><h2 className={tituloCard}>{datos.nombre}</h2></div>
                 <div className="my-2">{zonaDescripcion}</div>
                 {zonaContacto}

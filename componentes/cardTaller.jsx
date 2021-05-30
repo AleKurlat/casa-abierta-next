@@ -53,17 +53,20 @@ export default function Card(props) {
     let tituloCard;
     let zonaContacto;
     let zonaDescripcion;
+    let textoCard;
+    let tamañoCard = "";
 
     if (props.tipo === "unaCard") {
         tituloCard = "tituloCardGrande";
         claseContenedor = "contenedorImagenGrande";
         zonaContacto = <Contacto />
         zonaDescripcion = datos.descripcion;
+        tamañoCard = "cardGrande";
     } else {
         tituloCard = "tituloCard";
         claseContenedor = "contenedorImagen";
         zonaDescripcion = extracto(datos.descripcion);
-
+        textoCard = "textoCard";
     }
 
     let zonaDestacados;
@@ -75,10 +78,10 @@ export default function Card(props) {
     if (statePreLoader) { zonaPreLoader = preLoader };
 
     return (
-        <article className="card2" id={datos.id}>
-            <div>
+        <article className={"card2 " + tamañoCard} id={datos.id}>
+            <div className={textoCard}>
                 <div><h2 className={tituloCard}>{datos.nombre}</h2></div>
-                <div className="text-center">
+                <div className="">
                     <div><strong>Talleristas:</strong>  {datos.talleristas}</div>
                     <div><strong>Horarios:</strong>  {datos.horarios}</div>
                 </div>

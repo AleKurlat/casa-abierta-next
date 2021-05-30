@@ -44,7 +44,7 @@ export default function Talleres(props) {
                 return <Card {...props} datosCard={elemento} key={elemento.id} tipo="listado" />
             }).reverse()
         } else {
-            zonaListado = <div>Por el momento no hay entradas para mostrar</div>
+            zonaListado = <div className="card2">Por el momento no hay entradas para mostrar</div>
         }
     }
 

@@ -42,7 +42,7 @@ export default function Eventos(props) {
                 return <CardEvento {...props} datosCard={elemento} key={elemento.id} tipo="listado" />
             }).reverse()
         } else {
-            zonaListado = <div>Por el momento no hay entradas para mostrar</div>
+            zonaListado = <div className="card2">Por el momento no hay entradas para mostrar</div>
         }
     }
 
