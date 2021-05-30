@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import { preLoader, extracto } from "../librerias/libreriaApp.jsx";
 import { borrarImagen, traerImagenes } from "../librerias/libreriaImagenes.jsx";
 import EditarDestacado from './editarDestacado.jsx';
@@ -34,7 +34,7 @@ export default function CardImagen(props) {
     if (token && props.tipo === "listado") {
         zonaAdmin =
             <div className="botoneraCard d-flex flex-row mt-2">
-                <Button className="me-2 flex-grow-1" color="primary" tag={Link} href={rutaImagen + "/editar"}>Editar</Button>
+                <Link href={rutaImagen + "/editar"}><Button className="me-2 flex-grow-1" color="primary">Editar</Button></Link>
                 <Button className="flex-grow-1" color="danger" onClick={borrado}>Eliminar</Button>
             </div>
     }
@@ -43,7 +43,7 @@ export default function CardImagen(props) {
         botones =
             <div className="botoneraCard d-flex flex-wrap">
                 <div className="flex-grow-1">
-                    <Button className="flex-grow-1 w-100" color="primary" tag={Link} href={rutaImagen}>Ver en tamaño grande</Button>
+                    <Link href={rutaImagen}><Button className="flex-grow-1 w-100" color="primary" >Ver en tamaño grande</Button></Link>
                 </div>
                 {zonaAdmin}
             </div>

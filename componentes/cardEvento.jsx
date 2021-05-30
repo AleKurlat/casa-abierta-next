@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import { preLoader, extracto } from "../librerias/libreriaApp.jsx";
 import { borrarEvento, traerEventos } from "../librerias/libreriaEventos.jsx";
 import { Button } from 'reactstrap';
@@ -43,7 +43,7 @@ export default function CardEvento(props) {
     if (token && props.tipo === "listado") {
         zonaAdmin =
             <div className="botoneraCard d-flex flex-row mt-2">
-                <Button className="me-2 flex-grow-1" color="primary" tag={Link} href={rutaEvento + "/editar"}>Editar</Button>
+                <Link href={rutaEvento + "/editar"}><Button className="me-2 flex-grow-1" color="primary" >Editar</Button></Link>
                 <Button className="flex-grow-1" color="danger" onClick={borrado}>Eliminar</Button>
             </div>
     }
@@ -52,7 +52,7 @@ export default function CardEvento(props) {
         botones =
             <div className="botoneraCard d-flex flex-wrap">
                 <div className="flex-grow-1">
-                    <Button className="flex-grow-1 w-100" color="primary" tag={Link} href={rutaEvento}>Ver información del evento</Button>
+                    <Link href={rutaEvento}><Button className="flex-grow-1 w-100" color="primary" >Ver información del evento</Button></Link>
                 </div>
                 {zonaAdmin}
             </div>

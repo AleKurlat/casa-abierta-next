@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import { preLoader, extracto } from "../librerias/libreriaApp.jsx";
 import { borrarTaller, traerTalleres } from "../librerias/libreriaTalleres.jsx";
 import { Button } from 'reactstrap';
@@ -34,7 +34,7 @@ export default function Card(props) {
     if (token && props.tipo === "listado") {
         zonaAdmin =
             <div className="botoneraCard d-flex flex-row mt-2">
-                <Button className="me-2 flex-grow-1" color="primary" tag={Link} href={rutaTaller + "/editar"}>Editar</Button>
+                <Link href={rutaTaller + "/editar"} ><Button className="me-2 flex-grow-1" color="primary">Editar</Button></Link>
                 <Button className="flex-grow-1" color="danger" onClick={borrado}>Eliminar</Button>
             </div>
     }
@@ -43,7 +43,7 @@ export default function Card(props) {
         botones =
             <div className="botoneraCard d-flex flex-row flex-wrap">
                 <div className="flex-grow-1">
-                    <Button className="flex-grow-1 w-100" color="primary" tag={Link} href={rutaTaller}>Ver información del taller</Button>
+                    <Link href={rutaTaller} ><Button className="flex-grow-1 w-100" color="primary"  >Ver información del taller</Button></Link>
                 </div>
                 {zonaAdmin}
             </div>
@@ -80,7 +80,7 @@ export default function Card(props) {
     return (
         <article className={"card2 " + tamañoCard} id={datos.id}>
             <div className={textoCard}>
-                <div><h2 className={tituloCard}>{datos.nombre}</h2></div>
+                <Link href={rutaTaller}><a style={{ textDecoration: "none" }}><h2 className={tituloCard}>{datos.nombre}</h2></a></Link>
                 <div className="">
                     <div><strong>Talleristas:</strong>  {datos.talleristas}</div>
                     <div><strong>Horarios:</strong>  {datos.horarios}</div>
