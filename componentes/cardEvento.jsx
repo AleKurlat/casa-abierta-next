@@ -21,8 +21,10 @@ export default function CardEvento(props) {
     let horas;
     if (datos.fecha) {
         fecha = new Date(datos.fecha);
-        dia = fecha.toLocaleString().substring(0, 10);
-        const horas1 = fecha.toLocaleString().substring(10, 16);
+        const fechaLocal = fecha.toLocaleString();
+        const fechaPartes = fechaLocal.split(" ");
+        dia = fechaPartes[0];
+        const horas1 = fechaPartes[1];
         horas = horas1.trim().substring(0, 5);
     }
 
