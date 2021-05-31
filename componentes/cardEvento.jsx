@@ -44,7 +44,7 @@ export default function CardEvento(props) {
     if (token && props.tipo === "listado") {
         zonaAdmin =
             <div className="botoneraCard d-flex flex-row mt-2">
-                <Link href={rutaEvento + "/editar"}><Button className="me-2 flex-grow-1" color="primary" >Editar</Button></Link>
+                <Link href={rutaEvento + "/editar"} scroll={false}><Button className="me-2 flex-grow-1" color="primary" >Editar</Button></Link>
                 <Button className="flex-grow-1" color="danger" onClick={borrado}>Eliminar</Button>
             </div>
     }
@@ -53,7 +53,7 @@ export default function CardEvento(props) {
         botones =
             <div className="botoneraCard d-flex flex-wrap">
                 <div className="flex-grow-1">
-                    <Link href={rutaEvento}><Button className="flex-grow-1 w-100" color="primary" >Ver información del evento</Button></Link>
+                    <Link href={rutaEvento} scroll={false}><Button className="flex-grow-1 w-100" color="primary" >Ver información del evento</Button></Link>
                 </div>
                 {zonaAdmin}
             </div>
@@ -80,7 +80,7 @@ export default function CardEvento(props) {
         zonaContacto = <Contacto />
         zonaDescripcion = datos.descripcion;
         tamañoCard = "cardGrande";
-        botones = <Link href="/eventos/eventos" ><Button className="flex-grow-1 w-100" color="primary">Volver a eventos</Button></Link>
+        botones = <Link href="/eventos/eventos" scroll={false}><Button className="flex-grow-1 w-100" color="primary">Volver a eventos</Button></Link>
         textoCard = "textoCardGrande";
     } else {
         tituloCard = "tituloCard";
@@ -92,7 +92,7 @@ export default function CardEvento(props) {
     return (
         <article className={"card2 " + tamañoCard} id={datos.id}>
             <div className={textoCard}>
-                <Link href={rutaEvento}><a style={{ textDecoration: "none" }}><h2 className={tituloCard}>{datos.nombre}</h2></a></Link>
+                <Link href={rutaEvento} scroll={false}><a style={{ textDecoration: "none" }}><h2 className={tituloCard}>{datos.nombre}</h2></a></Link>
                 <div className="text-center">
                     <h5>{dia}</h5>
                     <h6>{horas}</h6>
@@ -101,7 +101,7 @@ export default function CardEvento(props) {
                 {zonaContacto}
             </div>
             <div>
-                <Link href={rutaEvento}><a><div className={claseContenedor}><img src={datos.imagen_url} alt={datos.nombre} /></div></a></Link>
+                <Link href={rutaEvento} scroll={false}><a><div className={claseContenedor}><img src={datos.imagen_url} alt={datos.nombre} /></div></a></Link>
                 {botones}
                 {zonaDestacados}
                 {zonaPreLoader}
