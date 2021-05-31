@@ -21,8 +21,9 @@ export default function CardEvento(props) {
     let horas;
     if (datos.fecha) {
         fecha = new Date(datos.fecha);
-        dia = fecha.toLocaleString().substring(0, 9);
-        horas = fecha.toLocaleString().substring(9, 15);
+        dia = fecha.toLocaleString().substring(0, 10);
+        const horas1 = fecha.toLocaleString().substring(10, 16);
+        horas = horas1.trim().substring(0, 5);
     }
 
     async function borrado() {

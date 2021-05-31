@@ -99,6 +99,7 @@ textarea{
   overflow: hidden;
   align-items: center;
   justify-content: center;
+  background-color: rgb(235, 238, 240);
 }
 
 .contenedorImagen img{
@@ -152,6 +153,10 @@ select {
 
 .textoCard {
   max-width: 300px
+}
+
+#listadoEventos img {
+  max-width: 100%;
 }
 
 @media (min-width:1000px) {

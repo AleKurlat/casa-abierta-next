@@ -5,8 +5,8 @@ export let dominio;
 if (process.env.NODE_ENV === 'production') {
     dominio = "https://casa-abierta-server.herokuapp.com";
 } else {
-    dominio = "http://localhost:3001";
-    //dominio = "https://casa-abierta-server.herokuapp.com";
+    //dominio = "http://localhost:3001";
+    dominio = "https://casa-abierta-server.herokuapp.com";
 }
 
 export const preLoader =

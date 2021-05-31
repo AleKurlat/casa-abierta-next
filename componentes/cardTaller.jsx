@@ -11,6 +11,7 @@ export default function Card(props) {
 
     const datos = props.datosCard;
     const rutaTaller = "/talleres/taller/" + datos.id;
+    const rutaIr = rutaTaller + "#principal";
     const [statePreLoader, preLoaderOn] = useState(false);
     const token = useSelector((estado) => estado.token);
     const autorizacion = { headers: { Authorization: token } };
@@ -34,7 +35,7 @@ export default function Card(props) {
     if (token && props.tipo === "listado") {
         zonaAdmin =
             <div className="botoneraCard d-flex flex-row mt-2">
-                <Link href={rutaTaller + "/editar"} ><Button className="me-2 flex-grow-1" color="primary">Editar</Button></Link>
+                <Link href={rutaTaller + "/editar#principal"} ><Button className="me-2 flex-grow-1" color="primary">Editar</Button></Link>
                 <Button className="flex-grow-1" color="danger" onClick={borrado}>Eliminar</Button>
             </div>
     }
@@ -43,7 +44,7 @@ export default function Card(props) {
         botones =
             <div className="botoneraCard d-flex flex-row flex-wrap">
                 <div className="flex-grow-1">
-                    <Link href={rutaTaller} ><Button className="flex-grow-1 w-100" color="primary"  >Ver información del taller</Button></Link>
+                    <Link href={rutaIr} ><Button className="flex-grow-1 w-100" color="primary"  >Ver información del taller</Button></Link>
                 </div>
                 {zonaAdmin}
             </div>
@@ -62,7 +63,7 @@ export default function Card(props) {
         zonaContacto = <Contacto />
         zonaDescripcion = datos.descripcion;
         tamañoCard = "cardGrande";
-        botones = <Link href="/talleres/talleres" ><Button className="flex-grow-1 w-100" color="primary">Volver a talleres</Button></Link>
+        botones = <Link href="/talleres/talleres#principal" ><Button className="flex-grow-1 w-100" color="primary">Volver a talleres</Button></Link>
         textoCard = "textoCardGrande";
     } else {
         tituloCard = "tituloCard";
@@ -82,7 +83,7 @@ export default function Card(props) {
     return (
         <article className={"card2 " + tamañoCard} id={datos.id}>
             <div className={textoCard}>
-                <Link href={rutaTaller}><a style={{ textDecoration: "none" }}><h2 className={tituloCard}>{datos.nombre}</h2></a></Link>
+                <Link href={rutaIr}><a style={{ textDecoration: "none" }}><h2 className={tituloCard}>{datos.nombre}</h2></a></Link>
                 <div className="">
                     <div><strong>Talleristas:</strong>  {datos.talleristas}</div>
                     <div><strong>Horarios:</strong>  {datos.horarios}</div>
@@ -91,7 +92,7 @@ export default function Card(props) {
                 {zonaContacto}
             </div>
             <div>
-                <Link href={rutaTaller}><a><div className={claseContenedor}><img src={datos.imagen_url} alt={datos.nombre} /></div></a></Link>
+                <Link href={rutaIr}><a><div className={claseContenedor}><img src={datos.imagen_url} alt={datos.nombre} /></div></a></Link>
                 {botones}
                 {zonaDestacados}
                 {zonaPreLoader}
