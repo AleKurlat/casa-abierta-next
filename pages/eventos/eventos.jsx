@@ -27,7 +27,7 @@ export default function Eventos(props) {
     useEffect(traerDatos, []);
     useEffect(() => {
         if (token) {
-            let barraAdmin = <Link href="/eventos/altaEvento" passHref><Button color="primary" className="p-3" >Agregar nuevo evento</Button></Link>
+            let barraAdmin = <Link href="/eventos/altaEvento#principal" passHref><Button color="primary" className="p-3" >Agregar nuevo evento</Button></Link>
             setZonaAdmin(barraAdmin);
         }
     }, [token]);

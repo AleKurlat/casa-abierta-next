@@ -11,6 +11,7 @@ export default function CardImagen(props) {
 
     const datos = props.datosCard;
     const rutaImagen = "/galeria/imagen/" + datos.id;
+    const rutaIr = rutaImagen + "#principal"
     const [statePreLoader, preLoaderOn] = useState(false);
     const token = useSelector((estado) => estado.token);
     const autorizacion = { headers: { Authorization: token } };
@@ -34,7 +35,7 @@ export default function CardImagen(props) {
     if (token && props.tipo === "listado") {
         zonaAdmin =
             <div className="botoneraCard d-flex flex-row mt-2">
-                <Link href={rutaImagen + "/editar"} scroll={false}><Button className="me-2 flex-grow-1" color="primary">Editar</Button></Link>
+                <Link href={rutaImagen + "/editar#principal"}><Button className="me-2 flex-grow-1" color="primary">Editar</Button></Link>
                 <Button className="flex-grow-1" color="danger" onClick={borrado}>Eliminar</Button>
             </div>
     }
@@ -43,7 +44,7 @@ export default function CardImagen(props) {
         botones =
             <div className="botoneraCard d-flex flex-wrap">
                 <div className="flex-grow-1">
-                    <Link href={rutaImagen} scroll={false}><Button className="flex-grow-1 w-100" color="primary" >Ver en tamaño grande</Button></Link>
+                    <Link href={rutaIr}><Button className="flex-grow-1 w-100" color="primary" >Ver en tamaño completo</Button></Link>
                 </div>
                 {zonaAdmin}
             </div>
@@ -70,7 +71,7 @@ export default function CardImagen(props) {
         zonaContacto = <Contacto />
         zonaDescripcion = datos.descripcion;
         tamañoCard = "cardGrande";
-        botones = <Link href="/galeria/galeria" scroll={false}><Button className="flex-grow-1 w-100" color="primary">Volver a galería</Button></Link>
+        botones = <Link href="/galeria/galeria#principal"><Button className="flex-grow-1 w-100" color="primary">Volver a galería</Button></Link>
         textoCard = "textoCardGrande";
     } else {
         tituloCard = "tituloCard";
@@ -82,12 +83,12 @@ export default function CardImagen(props) {
     return (
         <article className={"card2 " + tamañoCard} id={datos.id}>
             <div className={textoCard}>
-                <Link href={rutaImagen} scroll={false}><a style={{ textDecoration: "none" }} > <h2 className={tituloCard}>{datos.nombre}</h2></a></Link>
+                <Link href={rutaIr}><a style={{ textDecoration: "none" }} > <h2 className={tituloCard}>{datos.nombre}</h2></a></Link>
                 <div className="my-2">{zonaDescripcion}</div>
                 {zonaContacto}
             </div>
             <div>
-                <Link href={rutaImagen} scroll={false}><a ><div className={claseContenedor}><img src={datos.url} alt={datos.nombre} /></div></a></Link>
+                <Link href={rutaIr}><a ><div className={claseContenedor}><img src={datos.url} alt={datos.nombre} /></div></a></Link>
                 {botones}
                 {zonaDestacados}
                 {zonaPreLoader}

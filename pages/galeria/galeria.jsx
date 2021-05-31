@@ -25,7 +25,7 @@ export default function Galeria(props) {
     useEffect(traerDatos, []);
     useEffect(() => {
         if (token) {
-            let barraAdmin = <Link href="/galeria/altaImagen" passHref><Button color="primary" className="p-3" >Agregar nueva imagen</Button></Link>
+            let barraAdmin = <Link href="/galeria/altaImagen#principal" passHref><Button color="primary" className="p-3" >Agregar nueva imagen</Button></Link>
             setZonaAdmin(barraAdmin);
         }
     }, [token]);
