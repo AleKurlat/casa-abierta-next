@@ -155,7 +155,7 @@ select {
   max-width: 300px
 }
 
-#listadoEventos img {
+#listadoEventos img, #listadoDestacados img, #listadoTalleres img  {
   max-width: 100%;
 }
 

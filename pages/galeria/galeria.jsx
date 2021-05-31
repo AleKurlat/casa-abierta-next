@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import CardImagen from '../../componentes/cardImagen.jsx';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import { preLoader, urlImgDestacada } from "../../librerias/libreriaApp.jsx";
 import { traerImagenes } from "../../librerias/libreriaImagenes.jsx";
 import { useSelector, useDispatch } from 'react-redux';
@@ -25,7 +25,7 @@ export default function Galeria(props) {
     useEffect(traerDatos, []);
     useEffect(() => {
         if (token) {
-            let barraAdmin = <Button color="primary" tag={Link} className="p-3" href="/galeria/altaImagen">Agregar nueva imagen</Button>
+            let barraAdmin = <Link href="/galeria/altaImagen" passHref><Button color="primary" className="p-3" >Agregar nueva imagen</Button></Link>
             setZonaAdmin(barraAdmin);
         }
     }, [token]);

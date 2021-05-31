@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import CardEvento from '../../componentes/cardEvento.jsx';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import { preLoader, urlImgDestacada } from "../../librerias/libreriaApp.jsx";
 import { traerEventos } from "../../librerias/libreriaEventos.jsx";
 import { useSelector, useDispatch } from 'react-redux';
@@ -27,7 +27,7 @@ export default function Eventos(props) {
     useEffect(traerDatos, []);
     useEffect(() => {
         if (token) {
-            let barraAdmin = <Button color="primary" tag={Link} className="p-3" href="/eventos/altaEvento">Agregar nuevo evento</Button>
+            let barraAdmin = <Link href="/eventos/altaEvento" passHref><Button color="primary" className="p-3" >Agregar nuevo evento</Button></Link>
             setZonaAdmin(barraAdmin);
         }
     }, [token]);

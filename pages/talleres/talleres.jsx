@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import Card from '../../componentes/cardTaller.jsx';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import { preLoader, urlImgDestacada } from "../../librerias/libreriaApp.jsx";
 import { traerTalleres } from "../../librerias/libreriaTalleres.jsx";
 import { useSelector, useDispatch } from 'react-redux';
@@ -27,7 +27,7 @@ export default function Talleres(props) {
     useEffect(traerDatos, []);
     useEffect(() => {
         if (token) {
-            let barraAdmin = <Button color="primary" tag={Link} className="p-3" href="/talleres/altaTaller">Agregar nuevo taller</Button>
+            let barraAdmin = <Link href="/talleres/altaTaller" passHref><Button color="primary" className="p-3" >Agregar nuevo taller</Button></Link>
             setZonaAdmin(barraAdmin);
         }
     }, [token]);
