@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Nav, NavLink, Button } from 'reactstrap';
-import { Link } from 'next/link';
+import Link from 'next/link';
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 
@@ -35,13 +35,13 @@ export default function Principal(props) {
                     <div><img src="/logo3.svg" alt="logo" style={{ "marginLeft": "auto", "marginRight": "auto" }}></img></div>
                 </div>
 
-                <Nav pills className="nav nav-fill w-100">
-                    <NavLink tag={Link} className={"p-2 flex-grow-1 " + (router.pathname == "/" ? "active" : "")} href="/" exact="true">Inicio</NavLink>
-                    <NavLink tag={Link} className={"p-2 flex-grow-1 " + (router.pathname == "/talleres/talleres" ? "active" : "")} href="/talleres/talleres">Talleres</NavLink>
-                    <NavLink tag={Link} className={"p-2 flex-grow-1 " + (router.pathname == "/eventos/eventos" ? "active" : "")} href="/eventos/eventos">Eventos</NavLink>
-                    <NavLink tag={Link} className={"p-2 flex-grow-1 " + (router.pathname == "/galeria/galeria" ? "active" : "")} href="/galeria/galeria">Galería</NavLink>
-                    <NavLink tag={Link} className={"p-2 flex-grow-1 " + (router.pathname == "/nosotrxs" ? "active" : "")} href="/nosotrxs">Nosotrxs</NavLink>
-                    <NavLink href="https://www.instagram.com/saavedracasaabierta/" className="align-self-center" target="_blank" rel="noopener noreferrer"><img className="me-1" src="/ig50.png" alt="social media" style={{ width: "30px" }} />Instagram</NavLink>
+                <Nav pills className="nav nav-fill w-100" id="menuNav">
+                    <Link href="/" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/" ? "active" : "")} exact="true">Inicio</NavLink></Link>
+                    <Link href="/talleres/talleres" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/talleres/talleres" ? "active" : "")} >Talleres</NavLink></Link>
+                    <Link href="/eventos/eventos" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/eventos/eventos" ? "active" : "")} >Eventos</NavLink></Link>
+                    <Link href="/galeria/galeria" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/galeria/galeria" ? "active" : "")} >Galería</NavLink></Link>
+                    <Link href="/nosotrxs" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/nosotrxs" ? "active" : "")} >Nosotrxs</NavLink></Link>
+                    <Link href="https://www.instagram.com/saavedracasaabierta/" passHref scroll={false}><NavLink className="align-self-center" target="_blank" rel="noopener noreferrer"><img className="me-1" src="/ig50.png" alt="social media" style={{ width: "30px" }} />Instagram</NavLink></Link>
                 </Nav>
             </header>
 
@@ -49,7 +49,7 @@ export default function Principal(props) {
                 {props.children}
             </main>
             <footer>
-                <Button className="my-2" color="primary" tag={Link} href="/admins/adminLogin">Ingresar</Button>
+                <Link href="/admins/adminLogin#menuNav" passHref scroll={false}><Button className="my-2" color="primary" >Ingresar</Button></Link>
                 <div >
                     <h5 style={{ color: "#cf4444" }}>Centro Cultural Casa Abierta</h5>
                     <h6>Saavedra, C.A.B.A.</h6>
