@@ -71,6 +71,7 @@ export default function CardImagen(props) {
         zonaDescripcion = datos.descripcion;
         tamañoCard = "cardGrande";
         botones = <Link href="/galeria/galeria" ><Button className="flex-grow-1 w-100" color="primary">Volver a galería</Button></Link>
+        textoCard = "textoCardGrande";
     } else {
         tituloCard = "tituloCard";
         claseContenedor = "contenedorImagen";
@@ -85,8 +86,8 @@ export default function CardImagen(props) {
                 <div className="my-2">{zonaDescripcion}</div>
                 {zonaContacto}
             </div>
-            <div className={claseContenedor}><img src={datos.url} alt={datos.nombre} /></div>
             <div>
+                <Link href={rutaImagen}><a ><div className={claseContenedor}><img src={datos.url} alt={datos.nombre} /></div></a></Link>
                 {botones}
                 {zonaDestacados}
                 {zonaPreLoader}

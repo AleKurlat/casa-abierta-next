@@ -80,7 +80,7 @@ export default function CardEvento(props) {
         zonaDescripcion = datos.descripcion;
         tamañoCard = "cardGrande";
         botones = <Link href="/eventos/eventos" ><Button className="flex-grow-1 w-100" color="primary">Volver a eventos</Button></Link>
-
+        textoCard = "textoCardGrande";
     } else {
         tituloCard = "tituloCard";
         claseContenedor = "contenedorImagen";
@@ -99,8 +99,8 @@ export default function CardEvento(props) {
                 <div className="my-2">{zonaDescripcion}</div>
                 {zonaContacto}
             </div>
-            <div className={claseContenedor}><img src={datos.imagen_url} alt={datos.nombre} /></div>
             <div>
+                <div className={claseContenedor}><img src={datos.imagen_url} alt={datos.nombre} /></div>
                 {botones}
                 {zonaDestacados}
                 {zonaPreLoader}
