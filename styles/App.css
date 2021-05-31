@@ -57,7 +57,10 @@ footer{
 
 .card2 {
   margin:15px;
-  padding:10px;
+  padding-top:15px;
+  padding-bottom:15px;
+  padding-left:10px;
+  padding-right: 10px;
   border: 1px solid rgb(235, 238, 240);
   font-size:18px;
   overflow-wrap: break-word;
@@ -158,18 +161,13 @@ select {
     justify-content: space-between;
     width: 100%;
   }
-
   
   .card2:nth-child(3n+1):last-child {
     margin-left: auto;
     margin-right: auto;
     max-width: 330px;
-  }
-  
-
-  .card2:first-child:last-child {
-    margin-left: auto;
-    margin-right: auto;
+    flex-grow:unset;
+    padding:15px;
   }
 
   #contenedor{

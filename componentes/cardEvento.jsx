@@ -100,7 +100,7 @@ export default function CardEvento(props) {
                 {zonaContacto}
             </div>
             <div>
-                <div className={claseContenedor}><img src={datos.imagen_url} alt={datos.nombre} /></div>
+                <Link href={rutaEvento}><a><div className={claseContenedor}><img src={datos.imagen_url} alt={datos.nombre} /></div></a></Link>
                 {botones}
                 {zonaDestacados}
                 {zonaPreLoader}
