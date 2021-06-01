@@ -52,7 +52,7 @@ export default function EditarEvento(props) {
     }
 
     function volverAtras() {
-        router.push("/eventos/eventos");
+        router.push("/eventos/eventos#principal");
     }
 
     let zonaPreLoader;

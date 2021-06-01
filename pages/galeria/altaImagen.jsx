@@ -4,6 +4,7 @@ import { preLoader } from "../../librerias/libreriaApp.jsx";
 import { guardarImagen } from "../../librerias/libreriaImagenes.jsx";
 import { Form, FormGroup, Input, Button, Label } from 'reactstrap';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 //import { Button } from 'reactstrap';
 
@@ -30,7 +31,7 @@ export default function AltaImagen(props) {
         preLoaderOn(true);
         const resultadoOp = await guardarImagen(nuevaImagen, autorizacion)
         preLoaderOn(false);
-        if (resultadoOp) { router.push("/galeria/galeria") };
+        if (resultadoOp) { router.push("/galeria/galeria#principal") };
     }
 
     let zonaPreLoader;
@@ -55,6 +56,7 @@ export default function AltaImagen(props) {
                         <Input className="my-3" type="textarea" name="url" value={nuevaImagen.url} onChange={handler} required />
                     </FormGroup>
                     <Button type="submit" className="mt-3" color="primary" size="lg">Guardar imagen</Button>
+                    <Link href="/galeria/galeria#principal" passHref ><Button className="mt-3" color="primary" size="lg">Cancelar</Button></Link>
                 </Form>
             </section>
         </>

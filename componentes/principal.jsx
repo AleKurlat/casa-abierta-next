@@ -49,7 +49,7 @@ export default function Principal(props) {
                 {props.children}
             </main>
             <footer>
-                <Link href="/admins/adminLogin#principal" passHref><Button className="my-2" color="primary" >Ingresar</Button></Link>
+                <Link href="/admins/adminLogin#principal" passHref><Button className="my-2" color="primary">Ingresar</Button></Link>
                 <div >
                     <h5 style={{ color: "#cf4444" }}>Centro Cultural Casa Abierta</h5>
                     <h6>Saavedra, C.A.B.A.</h6>

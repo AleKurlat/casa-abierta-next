@@ -5,6 +5,7 @@ import { registrarAdmin } from "../../librerias/libreriaAdmins.jsx";
 import { Form, FormGroup, Input, Button, Label } from 'reactstrap';
 import { useRouter } from 'next/router';
 import swal from 'sweetalert';
+import Link from 'next/link';
 
 export default function Registro(props) {
 
@@ -51,6 +52,7 @@ export default function Registro(props) {
                     <Input className="my-3" type="password" onChange={cambiarValorInput} value={objRegistro.clave} name="clave" required />
                 </FormGroup>
                 <Button type="submit" className="mt-3" color="primary" size="lg">Guardar admin</Button>
+                <Link href="/#menuNav" passHref ><Button className="mt-3" color="primary" size="lg">Volver al inicio</Button></Link>
             </Form>
         </>
     )

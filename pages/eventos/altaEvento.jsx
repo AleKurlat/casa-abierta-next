@@ -4,6 +4,7 @@ import { preLoader } from "../../librerias/libreriaApp.jsx";
 import { guardarEvento } from "../../librerias/libreriaEventos.jsx";
 import { Form, FormGroup, Input, Button, Label } from 'reactstrap';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 //import { Button } from 'reactstrap';
 
@@ -25,7 +26,7 @@ export default function AltaEvento(props) {
         preLoaderOn(true);
         const resultadoOp = await guardarEvento(nuevoEvento, autorizacion)
         preLoaderOn(false);
-        if (resultadoOp) { router.push("/eventos/eventos") };
+        if (resultadoOp) { router.push("/eventos/eventos#principal") };
     }
 
     let zonaPreLoader;
@@ -54,6 +55,7 @@ export default function AltaEvento(props) {
                         <Input className="my-3" type="datetime-local" name="fecha" value={nuevoEvento.fecha} onChange={handler} required />
                     </FormGroup>
                     <Button type="submit" className="mt-3" color="primary" size="lg">Guardar evento</Button>
+                    <Link href="/eventos/eventos#principal" passHref ><Button className="mt-3" color="primary" size="lg">Cancelar</Button></Link>
                 </Form>
             </section>
         </>

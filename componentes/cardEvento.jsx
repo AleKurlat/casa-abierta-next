@@ -83,7 +83,7 @@ export default function CardEvento(props) {
         zonaContacto = <Contacto />
         zonaDescripcion = datos.descripcion;
         tamañoCard = "cardGrande";
-        botones = <Link href="/eventos/eventos#principal"><Button className="flex-grow-1 w-100" color="primary">Volver a eventos</Button></Link>
+        botones = <Link href="/eventos/eventos#menuNav"><Button className="flex-grow-1 w-100" color="primary">Volver a eventos</Button></Link>
         textoCard = "textoCardGrande";
     } else {
         tituloCard = "tituloCard";

@@ -4,6 +4,7 @@ import { preLoader } from "../../librerias/libreriaApp.jsx";
 import { guardarTaller } from "../../librerias/libreriaTalleres.jsx";
 import { Form, FormGroup, Input, Button, Label } from 'reactstrap';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 //import { Button } from 'reactstrap';
 
@@ -25,7 +26,7 @@ export default function AltaTaller(props) {
         preLoaderOn(true);
         const resultadoOp = await guardarTaller(nuevoTaller, autorizacion);
         preLoaderOn(false);
-        if (resultadoOp) { router.push("/talleres/talleres") };
+        if (resultadoOp) { router.push("/talleres/talleres#principal") };
     }
 
     let zonaPreLoader;
@@ -68,6 +69,7 @@ export default function AltaTaller(props) {
                         <Input className="my-3" type="textarea" name="imagen_url" value={nuevoTaller.imagen_url} onChange={handler} required />
                     </FormGroup>
                     <Button type="submit" className="mt-3" color="primary" size="lg">Guardar taller</Button>
+                    <Link href="/talleres/talleres#principal" passHref ><Button className="mt-3" color="primary" size="lg">Cancelar</Button></Link>
                 </Form>
             </section>
         </>

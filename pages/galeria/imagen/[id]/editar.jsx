@@ -52,7 +52,7 @@ export default function EditarCard(props) {
     }
 
     function volverAtras() {
-        router.push("/galeria/galeria");
+        router.push("/galeria/galeria#principal");
     }
 
     let zonaPreLoader;

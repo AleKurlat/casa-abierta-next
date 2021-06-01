@@ -12,7 +12,7 @@ export default function Descripcion(props) {
                 <Contacto />
             </div>
             <div className="contenedorImagenGrande"><img src="https://i.ibb.co/cNyzhy4/logo-Casa-Abierta.jpg" alt="Logo de Casa Abierta" /></div>
-            <Link href="/#principal" ><Button className="flex-grow-1 w-100" color="primary">Volver a inicio</Button></Link>
+            <Link href="/#menuNav" ><Button className="flex-grow-1 w-100" color="primary">Volver a inicio</Button></Link>
         </div>
     )
 }

@@ -48,7 +48,7 @@ export default function EditarCard(props) {
     }
 
     function volverAtras() {
-        router.push("/talleres/talleres");
+        router.push("/talleres/talleres#principal");
     }
 
     let zonaPreLoader;
