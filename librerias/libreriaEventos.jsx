@@ -1,6 +1,13 @@
 import axios from "axios";
 import { dominio, responderError } from "./libreriaApp.jsx";
 
+let origen;
+if (process.env.NODE_ENV === 'production') {
+    origen = { headers: { "origin": "https://casaabierta.vercel.app" } }
+} else {
+    origen = { headers: { "origin": "http://localhost:3000" } }
+}
+
 export async function traerEventos() {
     try {
         const url = dominio + "/eventos";
@@ -41,7 +48,7 @@ export async function guardarEvento(nuevoEvento, autorizacion) {
 export async function traerUnEvento(id) {
     try {
         const url = dominio + "/eventos/" + id;
-        const resp = await axios.get(url);
+        const resp = await axios.get(url, origen);
         if (resp && resp.status === 200) {
             return resp.data;
         }
