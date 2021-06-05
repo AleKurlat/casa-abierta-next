@@ -1,5 +1,5 @@
 import axios from "axios";
-import { dominio, responderError, origen } from "./libreriaApp.jsx";
+import { dominio, responderError } from "./libreriaApp.jsx";
 
 export async function traerImagenes() {
     try {
@@ -36,7 +36,7 @@ export async function guardarImagen(nuevaImagen, autorizacion) {
     catch (e) { return responderError(e); }
 }
 
-export async function traerUnaImagen(id) {
+export async function traerUnaImagen(id, origen) {
     try {
         const url = dominio + "/galeria/" + id;
         const resp = await axios.get(url, origen);

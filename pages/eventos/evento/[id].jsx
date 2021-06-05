@@ -5,7 +5,8 @@ import Head from 'next/head';
 
 export async function getServerSideProps(context) {
     const id = context.params.id;
-    const datosCard = await traerUnEvento(id);
+    const origen = { headers: { "origin": "http://" + context.req.headers.host } }
+    const datosCard = await traerUnEvento(id, origen);
 
     if (!datosCard) {
         return {

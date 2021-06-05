@@ -1,5 +1,5 @@
 import axios from "axios";
-import { dominio, responderError, origen } from "./libreriaApp.jsx";
+import { dominio, responderError } from "./libreriaApp.jsx";
 
 export async function traerEventos() {
     try {
@@ -38,7 +38,7 @@ export async function guardarEvento(nuevoEvento, autorizacion) {
     catch (e) { return responderError(e); }
 }
 
-export async function traerUnEvento(id) {
+export async function traerUnEvento(id, origen) {
     try {
         const url = dominio + "/eventos/" + id;
         const resp = await axios.get(url, origen);

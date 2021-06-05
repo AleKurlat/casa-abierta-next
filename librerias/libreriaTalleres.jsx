@@ -1,5 +1,5 @@
 import axios from "axios";
-import { dominio, responderError, origen } from "./libreriaApp.jsx";
+import { dominio, responderError } from "./libreriaApp.jsx";
 
 export async function traerTalleres() {
     try {
@@ -36,7 +36,7 @@ export async function guardarTaller(nuevoTaller, autorizacion) {
     catch (e) { return responderError(e); }
 }
 
-export async function traerUnTaller(id) {
+export async function traerUnTaller(id, origen) {
     try {
         const url = dominio + "/talleres/" + id;
         const resp = await axios.get(url, origen);
