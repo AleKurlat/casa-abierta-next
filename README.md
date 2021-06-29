@@ -3,3 +3,11 @@ Permite a los usuarios administradores cargar, modificar y eliminar contenido (t
 Fue optimizado para compartir contenidos en redes sociales, a través del renderizado del lado del servidor de las tarjetas y de la definición explícita de meta tags.   
 Versión en producción: https://casaabierta.vercel.app/   
 API REST: https://github.com/AleKurlat/app_casa_abierta_server  
+
+----  
+
+Client-side web application of the Casa Abierta cultural center. Developed in React and Next.js.  
+It allows administrator users to upload, modify and delete content (workshops, events and images) as well as customize the home page by choosing which cards to display and in what order.  
+It was optimized to share content on social networks, through the server-side rendering of the cards and the explicit definition of meta tags.
+Production version: https://casaabierta.vercel.app/  
+REST API: https://github.com/AleKurlat/app_casa_abierta_server  
