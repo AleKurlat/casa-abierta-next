@@ -6,10 +6,8 @@ export let origen;
 
 if (process.env.NODE_ENV === 'production') {
     dominio = "http://localhost:3000/api";
-    origen = { headers: { "origin": "https://casaabierta.vercel.app" } }
 } else {
     dominio = "http://localhost:3000/api";
-    origen = { headers: { "origin": "http://localhost:3000" } }
 }
 
 export const preLoader =
