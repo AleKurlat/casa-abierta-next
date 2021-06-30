@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'production') {
     dominio = "https://casa-abierta-server.herokuapp.com";
     origen = { headers: { "origin": "https://casaabierta.vercel.app" } }
 } else {
-    dominio = "http://localhost:3001";
+    dominio = "http://localhost:3000/api";
     origen = { headers: { "origin": "http://localhost:3000" } }
 }
 
