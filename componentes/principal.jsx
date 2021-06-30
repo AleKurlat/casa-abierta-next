@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 
 export default function Principal(props) {
+    const token = useSelector((estado) => estado.token);
     const usuario = useSelector((estado) => estado.usuario);
     const dispatch = useDispatch();
     const [zonaAdmin, setZonaAdmin] = useState();
@@ -16,7 +17,7 @@ export default function Principal(props) {
     }
 
     useEffect(() => {
-        if (usuario.usuario) {
+        if (token) {
             let barraAdmin =
                 <div className="zonaAdmin">
                     <h5 className="info">Bienvenidx {usuario.usuario}</h5>
