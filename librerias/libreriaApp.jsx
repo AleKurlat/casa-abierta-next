@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import swal from 'sweetalert';
 
 export let dominio;
