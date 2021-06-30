@@ -5,7 +5,7 @@ export let dominio;
 export let origen;
 
 if (process.env.NODE_ENV === 'production') {
-    dominio = "https://casa-abierta-server.herokuapp.com";
+    dominio = "http://localhost:3000/api";
     origen = { headers: { "origin": "https://casaabierta.vercel.app" } }
 } else {
     dominio = "http://localhost:3000/api";

@@ -7,8 +7,8 @@ const settingsPG = {
   "password": process.env.PASS,
   "database": process.env.DB,
   "port": process.env.DB_PORT,
-  "max": 1,
-  //"idleTimeoutMillis": 5000
+  "max": 3,
+  "idleTimeoutMillis": 3000
 };
 
 const pool = new Pool(settingsPG);
