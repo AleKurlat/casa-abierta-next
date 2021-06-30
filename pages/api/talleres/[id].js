@@ -1,6 +1,7 @@
 const modelTalleres = require("../../../APIutil/models/modelTalleres");
+import { auth } from "../../../APIutil/auth";
 
-export default async (req, res) => {
+async function handler(req, res) {
     const { id } = req.query;
     if (req.method === 'GET') {
         try {
@@ -55,3 +56,5 @@ export default async (req, res) => {
         }
     }
 }
+
+export default auth(handler);
