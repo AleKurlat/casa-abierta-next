@@ -4,7 +4,7 @@ export let dominio;
 export let origen;
 
 if (process.env.NODE_ENV === 'production') {
-    dominio = "http://localhost:3000/api";
+    dominio = "https://casaabierta.vercel.app/api";
 } else {
     dominio = "http://localhost:3000/api";
 }
