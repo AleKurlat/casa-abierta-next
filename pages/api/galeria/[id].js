@@ -17,6 +17,43 @@ async function handler(req, res) {
             res.send({ "Error": e.message });
         }
     }
+    if (req.method === 'PUT') {
+        try {
+            if (!req.body.nombre || !req.body.url || !req.body.descripcion) {
+                res.statusCode = 400;
+                throw new Error("Todos los campos deben contener información");
+            }
+
+            let respuesta = await modelGaleria.editarImagen(req.body.nombre, req.body.url, req.body.descripcion, id);
+
+            if (respuesta == 0) {
+                res.statusCode = 400;
+                throw new Error("No se realizó ninguna modificación");
+            } else {
+                res.send("Imagen editada correctamente")
+            };
+        }
+        catch (e) {
+            if (res.statusCode === 200) { res.statusCode = 500 };
+            res.send({ "Error": e.message });
+        }
+    }
+    if (req.method === 'DELETE') {
+        try {
+            let respuesta = await modelGaleria.borrarImagen(id);
+
+            if (respuesta == 0) {
+                res.statusCode = 400;
+                throw new Error("No se borró ninguna imagen");
+            } else {
+                res.send("Imagen eliminada correctamente")
+            };
+        }
+        catch (e) {
+            if (res.statusCode === 200) { res.statusCode = 500 };
+            res.send({ "Error": e.message });
+        }
+    }
 }
 
 export default auth(handler);
