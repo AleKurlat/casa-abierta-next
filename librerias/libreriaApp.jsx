@@ -1,13 +1,6 @@
 import swal from 'sweetalert';
 
-export let dominio;
-export let origen;
-
-if (process.env.NODE_ENV === 'production') {
-    dominio = "https://casaabierta.vercel.app/api";
-} else {
-    dominio = "http://localhost:3000/api";
-}
+export const dominio = process.env.NEXT_PUBLIC_API_URL;
 
 export const preLoader =
     <div className="preLoader"><img src="/loading.svg" alt="esperando" style={{ "marginLeft": "auto", "marginRight": "auto" }}></img></div>;
