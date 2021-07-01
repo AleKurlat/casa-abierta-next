@@ -187,4 +187,8 @@ select {
     max-width: fit-content;
     min-width: 300px;
 }
+
+.waiting {
+  margin-top: 10px;
+}
 }

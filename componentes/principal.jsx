@@ -3,13 +3,16 @@ import { Nav, NavLink, Button } from 'reactstrap';
 import Link from 'next/link';
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
+import { preLoader } from "../librerias/libreriaApp.jsx";
 
 export default function Principal(props) {
     const token = useSelector((estado) => estado.token);
     const usuario = useSelector((estado) => estado.usuario);
     const dispatch = useDispatch();
     const [zonaAdmin, setZonaAdmin] = useState();
+    const [loading, setLoading] = useState();
     const router = useRouter();
+    let spinner;
 
     function desloguear() {
         dispatch({ type: 'GUARDAR_TOKEN', token: "" });
@@ -27,6 +30,21 @@ export default function Principal(props) {
         }
     }, [usuario]);
 
+    useEffect(() => {
+        const start = () => { setLoading(true) };
+        const end = () => { setLoading(false) };
+        router.events.on("routeChangeStart", start);
+        router.events.on("routeChangeComplete", end);
+        router.events.on("routeChangeError", end);
+        return () => {
+            router.events.off("routeChangeStart", start);
+            router.events.off("routeChangeComplete", end);
+            router.events.off("routeChangeError", end);
+        };
+    }, []);
+
+    if (loading) { spinner = "block" } else { spinner = "none" }
+
     return (
         <div id="contenedor">
             <header id="encabezado">
@@ -35,7 +53,6 @@ export default function Principal(props) {
                     <div><img src="/logo2bis.svg" alt="logo" style={{ "marginLeft": "auto", "marginRight": "auto" }}></img></div>
                     <div><img src="/logo3.svg" alt="logo" style={{ "marginLeft": "auto", "marginRight": "auto" }}></img></div>
                 </div>
-
                 <Nav pills className="nav nav-fill w-100" id="menuNav">
                     <Link href="/" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/" ? "active" : "")} exact="true">Inicio</NavLink></Link>
                     <Link href="/talleres/talleres" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/talleres/talleres" ? "active" : "")} >Talleres</NavLink></Link>
@@ -44,6 +61,7 @@ export default function Principal(props) {
                     <Link href="/nosotrxs" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/nosotrxs" ? "active" : "")} >Nosotrxs</NavLink></Link>
                     <Link href="https://www.instagram.com/saavedracasaabierta/" passHref scroll={false}><NavLink className="align-self-center" target="_blank" rel="noopener noreferrer"><img className="me-1" src="/ig50.png" alt="social media" style={{ width: "30px" }} />Instagram</NavLink></Link>
                 </Nav>
+                <div className="waiting" style={{ display: spinner }} >{preLoader}</div>
             </header>
 
             <main id="principal">
