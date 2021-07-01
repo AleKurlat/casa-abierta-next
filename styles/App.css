@@ -159,6 +159,14 @@ select {
   max-width: 100%;
 }
 
+.waiting {
+  position:fixed;
+  background: rgb(247, 249, 250);
+  border-radius: 100%;
+  border: 1px solid rgb(235, 238, 240);;
+  top:35%;
+}
+
 @media (min-width:1000px) {
   section {
     display: flex;
@@ -188,10 +196,4 @@ select {
     min-width: 300px;
 }
 
-.waiting {
-  position:fixed;
-  background: rgb(247, 249, 250);
-  border-radius: 100%;
-  border: 1px solid rgb(235, 238, 240);;
-}
 }
