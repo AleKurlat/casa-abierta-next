@@ -11,7 +11,7 @@ import Link from 'next/link';
 export default function AltaTaller(props) {
 
     const nuevoTallerVacio = { nombre: "", descripcion: "", talleristas: "", horarios: "", imagen_url: "" };
-    const [adjuntos, setAdjuntos] = useState(["aa"]);
+    const [adjuntos, setAdjuntos] = useState([]);
     const [nuevoTaller, setNuevoTaller] = useState(nuevoTallerVacio);
     const token = useSelector((estado) => estado.token);
     const autorizacion = { headers: { Authorization: token } };
@@ -42,7 +42,15 @@ export default function AltaTaller(props) {
     if (statePreLoader) { zonaPreLoader = preLoader };
 
     const listaAdjuntos = adjuntos.map((elem, i) => {
-        return <Input key={i} className="my-3" type="textarea" name="adjuntos" value={elem} onChange={(e) => handlerAdjunto(e, i)} />
+        return (
+            <div key={i} className="d-flex" >
+                <Input className="my-3" type="textarea" name="adjuntos" value={elem} onChange={(e) => handlerAdjunto(e, i)} />
+                <Button className="m-2 align-self-center" color="danger" onClick={() => {
+                    let adjuntosProvisorio = [...adjuntos];
+                    adjuntosProvisorio = adjuntosProvisorio.filter((_, elemIndex) => { return elemIndex !== i })
+                    setAdjuntos(adjuntosProvisorio)
+                }}>X</Button>
+            </div>)
     })
 
     return (
@@ -86,7 +94,7 @@ export default function AltaTaller(props) {
                             URL de adjuntos (Instagram, etc.)
                         </Label>
                         {listaAdjuntos}
-                        <Button onClick={() => {
+                        <Button className="mt-3 w-100" color="info" onClick={() => {
                             const adjuntosProvisorio = [...adjuntos];
                             adjuntosProvisorio.push("");
                             setAdjuntos(adjuntosProvisorio)
