@@ -19,13 +19,14 @@ async function handler(req, res) {
     }
 
     if (req.method === 'PUT') {
+        const { nombre, descripcion, talleristas, horarios, imagen_url, adjuntos } = req.body;
         try {
-            if (!req.body.nombre || !req.body.descripcion || !req.body.talleristas || !req.body.horarios || !req.body.imagen_url) {
+            if (!nombre || !descripcion || !talleristas || !horarios || !imagen_url) {
                 res.statusCode = 400;
                 throw new Error("Todos los campos deben contener información");
             }
 
-            let respuesta = await modelTalleres.editarTaller(req.body.nombre, req.body.descripcion, req.body.talleristas, req.body.horarios, req.body.imagen_url, id);
+            let respuesta = await modelTalleres.editarTaller(id, nombre, descripcion, talleristas, horarios, imagen_url, adjuntos);
 
             if (respuesta == 0) {
                 res.statusCode = 400;

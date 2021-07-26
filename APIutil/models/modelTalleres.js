@@ -25,11 +25,11 @@ export async function traerUnTaller(id) {
     client.release();
     return respuesta.rows[0];
 }
-export async function editarTaller(nombre, descripcion, talleristas, horarios, imagen_url, id) {
+export async function editarTaller(id, nombre, descripcion, talleristas, horarios, imagen_url, adjuntos) {
     const client = await pool.connect();
     let respuesta = await client.query(
-        "UPDATE talleres SET nombre = $1, descripcion = $2, talleristas = $3, horarios = $4, imagen_url=$5 WHERE id = $6",
-        [nombre, descripcion, talleristas, horarios, imagen_url, id]);
+        "UPDATE talleres SET nombre = $2, descripcion = $3, talleristas = $4, horarios = $5, imagen_url=$6, adjuntos =$7 WHERE id = $1",
+        [id, nombre, descripcion, talleristas, horarios, imagen_url, adjuntos]);
     client.release();
     return respuesta.rowCount;
 }
