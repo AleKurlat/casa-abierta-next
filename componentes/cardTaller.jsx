@@ -83,7 +83,7 @@ export default function Card(props) {
 
     let listadoAdjuntos;
     if (datos.adjuntos && props.tipo === "unaCard") {
-        listadoAdjuntos = datos.adjuntos.map((elem, index) => { return <Cuadro key={index} fuente={elem + "embed"} /> })
+        listadoAdjuntos = datos.adjuntos.map((elem, index) => { return <Cuadro key={index} fuente={elem} /> })
     }
 
     return (
