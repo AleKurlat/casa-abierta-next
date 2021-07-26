@@ -167,6 +167,13 @@ select {
   top:35%;
 }
 
+.nav>a:focus, .nav>a:hover {
+  background-color: #eee;
+}
+
+.card2 a h2:hover, .card2 a h2:focus {
+color: #a03333}
+
 @media (min-width:1000px) {
   section {
     display: flex;
