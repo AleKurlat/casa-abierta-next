@@ -11,6 +11,7 @@ import Link from 'next/link';
 export default function AltaTaller(props) {
 
     const nuevoTallerVacio = { nombre: "", descripcion: "", talleristas: "", horarios: "", imagen_url: "" };
+    const [adjuntos, setAdjuntos] = useState(["aa"]);
     const [nuevoTaller, setNuevoTaller] = useState(nuevoTallerVacio);
     const token = useSelector((estado) => estado.token);
     const autorizacion = { headers: { Authorization: token } };
@@ -21,16 +22,28 @@ export default function AltaTaller(props) {
         setNuevoTaller({ ...nuevoTaller, [e.target.name]: e.target.value });
     };
 
+    function handlerAdjunto(e, i) {
+        const adjuntosProvisorio = [...adjuntos]
+        adjuntosProvisorio[i] = e.target.value;
+        setAdjuntos(adjuntosProvisorio);
+    };
+
     async function guardarForm(evento) {
         evento.preventDefault();
+        const nuevoTallerConAdj = { ...nuevoTaller };
+        nuevoTallerConAdj.adjuntos = JSON.stringify(adjuntos);
         preLoaderOn(true);
-        const resultadoOp = await guardarTaller(nuevoTaller, autorizacion);
+        const resultadoOp = await guardarTaller(nuevoTallerConAdj, autorizacion);
         preLoaderOn(false);
         if (resultadoOp) { router.push("/talleres/talleres#principal") };
     }
 
     let zonaPreLoader;
     if (statePreLoader) { zonaPreLoader = preLoader };
+
+    const listaAdjuntos = adjuntos.map((elem, i) => {
+        return <Input key={i} className="my-3" type="textarea" name="adjuntos" value={elem} onChange={(e) => handlerAdjunto(e, i)} />
+    })
 
     return (
         <>
@@ -41,32 +54,38 @@ export default function AltaTaller(props) {
                     <FormGroup>
                         <Label>
                             Nombre
-                    </Label>
+                        </Label>
                         <Input className="my-3" type="textarea" name="nombre" value={nuevoTaller.nombre} onChange={handler} required />
                     </FormGroup>
                     <FormGroup>
                         <Label>
                             Descripción
-                    </Label>
+                        </Label>
                         <Input className="my-3" type="textarea" name="descripcion" value={nuevoTaller.descripcion} onChange={handler} required />
                     </FormGroup>
                     <FormGroup>
                         <Label>
                             Talleristas
-                    </Label>
+                        </Label>
                         <Input className="my-3" type="textarea" name="talleristas" value={nuevoTaller.talleristas} onChange={handler} required />
                     </FormGroup>
                     <FormGroup>
                         <Label>
                             Horarios
-                    </Label>
+                        </Label>
                         <Input className="my-3" type="textarea" name="horarios" value={nuevoTaller.horarios} onChange={handler} required />
                     </FormGroup>
                     <FormGroup>
                         <Label>
                             URL de imagen
-                    </Label>
+                        </Label>
                         <Input className="my-3" type="textarea" name="imagen_url" value={nuevoTaller.imagen_url} onChange={handler} required />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>
+                            URL de adjuntos (Instagram, etc.)
+                        </Label>
+                        {listaAdjuntos}
                     </FormGroup>
                     <Button type="submit" className="mt-3" color="primary" size="lg">Guardar taller</Button>
                     <Link href="/talleres/talleres#principal" passHref ><Button className="mt-3" color="primary" size="lg">Cancelar</Button></Link>

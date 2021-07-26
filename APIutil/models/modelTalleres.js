@@ -1,11 +1,11 @@
 //model Talleres app server Casa Abierta
 import { pool } from "../conexionPG";
 
-export async function postearTaller(nombre, descripcion, talleristas, horarios, imagen_url) {
+export async function postearTaller(nombre, descripcion, talleristas, horarios, imagen_url, adjuntos) {
     const client = await pool.connect();
     let respuesta = await client.query(
-        "INSERT INTO talleres (nombre, descripcion, talleristas, horarios, imagen_url) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-        [nombre, descripcion, talleristas, horarios, imagen_url]);
+        "INSERT INTO talleres (nombre, descripcion, talleristas, horarios, imagen_url, adjuntos) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+        [nombre, descripcion, talleristas, horarios, imagen_url, adjuntos]);
     client.release();
     return respuesta.rows;
 }

@@ -19,7 +19,7 @@ async function handler(req, res) {
         res.statusCode = 400;
         throw new Error("Es necesario completar todos los campos");
       }
-      let respuesta = await modelTalleres.postearTaller(req.body.nombre, req.body.descripcion, req.body.talleristas, req.body.horarios, req.body.imagen_url);
+      let respuesta = await modelTalleres.postearTaller(req.body.nombre, req.body.descripcion, req.body.talleristas, req.body.horarios, req.body.imagen_url, req.body.adjuntos);
 
       res.send(respuesta);
     }
