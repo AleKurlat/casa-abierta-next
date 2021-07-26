@@ -86,6 +86,11 @@ export default function AltaTaller(props) {
                             URL de adjuntos (Instagram, etc.)
                         </Label>
                         {listaAdjuntos}
+                        <Button onClick={() => {
+                            const adjuntosProvisorio = [...adjuntos];
+                            adjuntosProvisorio.push("");
+                            setAdjuntos(adjuntosProvisorio)
+                        }}>Agregar nuevo adjunto</Button>
                     </FormGroup>
                     <Button type="submit" className="mt-3" color="primary" size="lg">Guardar taller</Button>
                     <Link href="/talleres/talleres#principal" passHref ><Button className="mt-3" color="primary" size="lg">Cancelar</Button></Link>

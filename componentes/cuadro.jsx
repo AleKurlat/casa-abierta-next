@@ -5,7 +5,7 @@ export default function Cuadro(props) {
     const reference = useRef(null);
     const { fuente } = props;
     useEffect(() => {
-        setFrameHeight(reference.current.offsetWidth * 1.5)
+        setFrameHeight(reference.current.offsetWidth * 1.2)
     }, [])
     return (
         <iframe ref={reference} width="100%" height={frameHeight} frameBorder="0" allowFullScreen src={fuente}></iframe>
