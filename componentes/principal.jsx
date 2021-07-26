@@ -55,9 +55,9 @@ export default function Principal(props) {
                 </div>
                 <Nav pills className="nav nav-fill w-100" id="menuNav">
                     <Link href="/" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/" ? "active" : "")} exact="true">Inicio</NavLink></Link>
-                    <Link href="/talleres/talleres" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/talleres/talleres" ? "active" : "")} >Talleres</NavLink></Link>
-                    <Link href="/eventos/eventos" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/eventos/eventos" ? "active" : "")} >Eventos</NavLink></Link>
-                    <Link href="/galeria/galeria" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/galeria/galeria" ? "active" : "")} >Galería</NavLink></Link>
+                    <Link href="/talleres/talleres" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname.includes("/talleres/") ? "active" : "")} >Talleres</NavLink></Link>
+                    <Link href="/eventos/eventos" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname.includes("/eventos/") ? "active" : "")} >Eventos</NavLink></Link>
+                    <Link href="/galeria/galeria" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname.includes("/galeria/") ? "active" : "")} >Galería</NavLink></Link>
                     <Link href="/nosotrxs" passHref scroll={false}><NavLink className={"p-2 flex-grow-1 " + (router.pathname == "/nosotrxs" ? "active" : "")} >Nosotrxs</NavLink></Link>
                     <Link href="https://www.instagram.com/saavedracasaabierta/" passHref scroll={false}><NavLink className="align-self-center" target="_blank" rel="noopener noreferrer"><img className="me-1" src="/ig50.png" alt="social media" style={{ width: "30px" }} />Instagram</NavLink></Link>
                 </Nav>

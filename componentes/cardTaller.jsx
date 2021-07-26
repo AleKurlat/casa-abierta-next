@@ -82,7 +82,7 @@ export default function Card(props) {
     if (statePreLoader) { zonaPreLoader = preLoader };
 
     let listadoAdjuntos;
-    if (datos.adjuntos && props.tipo === "unaCard") {
+    if (datos.adjuntos && datos.adjuntos.length > 0 && props.tipo === "unaCard") {
         listadoAdjuntos = datos.adjuntos.map((elem, index) => { return <Cuadro key={index} fuente={elem} /> })
     }
 
