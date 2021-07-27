@@ -172,7 +172,26 @@ select {
 }
 
 .card2 a h2:hover, .card2 a h2:focus {
-color: #a03333}
+color: #a03333
+}
+
+.embedFrame{
+  border: 1px solid lightgray;
+  border-radius:7px;
+  margin-bottom:10px;
+  padding: 10px;
+  overflow:hidden;
+}
+
+.frameYoutube{
+  width: 300px;  
+  height: 160px; 
+} 
+
+.frameInstagram{
+  width: 300px; 
+  height: 400px; 
+} 
 
 @media (min-width:1000px) {
   section {
@@ -203,4 +222,13 @@ color: #a03333}
     min-width: 300px;
 }
 
+.frameYoutube{
+  width: 600px;  
+  height: 315px; 
+} 
+
+.frameInstagram{
+  width: 500px; 
+  height: 600px; 
+} 
 }

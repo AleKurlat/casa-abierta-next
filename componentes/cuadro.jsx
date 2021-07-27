@@ -1,21 +1,20 @@
-import { useRef, useEffect, useState } from 'react';
-
 export default function Cuadro(props) {
-    const [frameHeight, setFrameHeight] = useState("100px");
-    const reference = useRef(null);
     const { fuente } = props;
     let url;
+    let clase;
     if (fuente.includes("youtube")) {
         const videoID = fuente.split("=").pop()
+        clase = "frameYoutube"
         url = "https://www.youtube.com/embed/" + videoID
     }
     if (fuente.includes("instagram")) {
         url = fuente + "embed"
+        clase = "frameInstagram"
     }
-    useEffect(() => {
-        setFrameHeight(reference.current.offsetWidth * 1.2)
-    }, [])
+
     return (
-        <iframe ref={reference} width="100%" height={frameHeight} frameBorder="0" allowFullScreen src={url}></iframe>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+            <iframe className={clase + " embedFrame"} frameBorder="0" allowFullScreen src={url}></iframe>
+        </div>
     )
 }
