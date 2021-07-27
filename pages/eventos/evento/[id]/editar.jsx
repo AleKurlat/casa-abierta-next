@@ -9,6 +9,7 @@ import { Form, FormGroup, Input, Button, Label } from 'reactstrap';
 export default function EditarEvento(props) {
     const [dataForm, setDataForm] = useState({ nombre: "", descripcion: "", imagen_url: "", fecha: "" });
     const [statePreLoader, preLoaderOn] = useState(false);
+    const [adjuntos, setAdjuntos] = useState([]);
     const token = useSelector((estado) => estado.token);
     const autorizacion = { headers: { Authorization: token } };
     const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export default function EditarEvento(props) {
             let fechaFormateada = new Date(new Date(datosCard.fecha).toString().split('GMT')[0] + ' UTC').toISOString().substring(0, 16);
             datosCard.fecha = fechaFormateada;
             setDataForm(datosCard);
+            if (datosCard.adjuntos && datosCard.adjuntos.length > 0) { setAdjuntos(datosCard.adjuntos) }
         }
     }
 
@@ -35,10 +37,18 @@ export default function EditarEvento(props) {
         setDataForm({ ...dataForm, [e.target.name]: e.target.value });
     }
 
+    function handlerAdjunto(e, i) {
+        const adjuntosProvisorio = [...adjuntos]
+        adjuntosProvisorio[i] = e.target.value;
+        setAdjuntos(adjuntosProvisorio);
+    };
+
     async function guardarCambios(evento) {
         evento.preventDefault();
+        const eventoEditado = { ...dataForm }
+        eventoEditado.adjuntos = JSON.stringify(adjuntos);
         preLoaderOn(true);
-        const resultadoOp = await editarEvento(id, dataForm, autorizacion);
+        const resultadoOp = await editarEvento(id, eventoEditado, autorizacion);
         preLoaderOn(false);
         if (resultadoOp) {
             preLoaderOn(true);
@@ -57,6 +67,18 @@ export default function EditarEvento(props) {
 
     let zonaPreLoader;
     if (statePreLoader) { zonaPreLoader = preLoader };
+
+    const listaAdjuntos = adjuntos.map((elem, i) => {
+        return (
+            <div key={i} className="d-flex" >
+                <Input className="my-3" type="textarea" name="adjuntos" value={elem} onChange={(e) => handlerAdjunto(e, i)} />
+                <Button className="m-2 align-self-center" color="danger" onClick={() => {
+                    let adjuntosProvisorio = [...adjuntos];
+                    adjuntosProvisorio = adjuntosProvisorio.filter((_, elemIndex) => { return elemIndex !== i })
+                    setAdjuntos(adjuntosProvisorio)
+                }}>X</Button>
+            </div>)
+    })
 
     return (
         <>
@@ -79,6 +101,17 @@ export default function EditarEvento(props) {
                     <FormGroup>
                         <Label>Fecha y hora</Label>
                         <Input className="my-3" type="datetime-local" name="fecha" value={dataForm.fecha} onChange={handler} required />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>
+                            URL de adjuntos (Instagram, etc.)
+                        </Label>
+                        <Button className="mt-3 w-100" color="info" onClick={() => {
+                            const adjuntosProvisorio = [...adjuntos];
+                            adjuntosProvisorio.push("");
+                            setAdjuntos(adjuntosProvisorio)
+                        }}>Agregar nuevo adjunto</Button>
+                        {listaAdjuntos}
                     </FormGroup>
                     <Button type="submit" className="mt-3" color="primary" size="lg">Guardar cambios</Button>
                     <Button className="mt-3" color="primary" size="lg" onClick={volverAtras}>Cancelar</Button>

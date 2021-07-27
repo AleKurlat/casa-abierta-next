@@ -19,11 +19,12 @@ async function handler(req, res) {
     }
     if (req.method === 'PUT') {
         try {
-            if (!req.body.nombre || !req.body.descripcion || !req.body.imagen_url || !req.body.fecha) {
+            const { nombre, descripcion, imagen_url, fecha, adjuntos } = req.body
+            if (!nombre || !descripcion || !imagen_url || !fecha) {
                 res.statusCode = 400;
                 throw new Error("Todos los campos deben contener información");
             }
-            let respuesta = await modelEventos.editarEvento(req.body.nombre, req.body.descripcion, req.body.imagen_url, req.body.fecha, id);
+            let respuesta = await modelEventos.editarEvento(nombre, descripcion, imagen_url, fecha, id, adjuntos);
             if (respuesta == 0) {
                 res.statusCode = 400;
                 throw new Error("No se realizó ninguna modificación");

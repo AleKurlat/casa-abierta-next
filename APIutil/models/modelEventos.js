@@ -20,10 +20,10 @@ export async function traerUnEvento(id) {
         [id]);
     return respuesta.rows[0];
 }
-export async function editarEvento(nombre, descripcion, imagen_url, fecha, id) {
+export async function editarEvento(nombre, descripcion, imagen_url, fecha, id, adjuntos) {
     let respuesta = await pool.query(
-        "UPDATE eventos SET nombre = $1, descripcion = $2, imagen_url = $3, fecha = $4 WHERE id = $5",
-        [nombre, descripcion, imagen_url, fecha, id]);
+        "UPDATE eventos SET nombre = $1, descripcion = $2, imagen_url = $3, fecha = $4, adjuntos = $6 WHERE id = $5",
+        [nombre, descripcion, imagen_url, fecha, id, adjuntos]);
     return respuesta.rowCount;
 }
 export async function borrarEvento(id) {
