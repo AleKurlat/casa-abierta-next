@@ -6,6 +6,7 @@ import EditarDestacado from './editarDestacado.jsx';
 import { Button } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import Contacto from './contacto.jsx';
+import Cuadro from "./cuadro"
 
 export default function CardImagen(props) {
 
@@ -80,6 +81,11 @@ export default function CardImagen(props) {
         textoCard = "textoCard";
     }
 
+    let listadoAdjuntos;
+    if (datos.adjuntos && datos.adjuntos.length > 0 && props.tipo === "unaCard") {
+        listadoAdjuntos = datos.adjuntos.map((elem, index) => { return <Cuadro key={index} fuente={elem} /> })
+    }
+
     return (
         <article className={"card2 " + tamañoCard} id={datos.id}>
             <div className={textoCard}>
@@ -89,6 +95,7 @@ export default function CardImagen(props) {
             </div>
             <div>
                 <Link href={rutaIr}><a ><div className={claseContenedor}><img src={datos.url} alt={datos.nombre} /></div></a></Link>
+                {listadoAdjuntos}
                 {botones}
                 {zonaDestacados}
                 {zonaPreLoader}
