@@ -12,6 +12,7 @@ export default function EditarCard(props) {
         url: "",
         descripcion: "",
     });
+    const [adjuntos, setAdjuntos] = useState([]);
     const [statePreLoader, preLoaderOn] = useState(false);
     const token = useSelector((estado) => estado.token);
     const autorizacion = { headers: { Authorization: token } };
@@ -23,7 +24,11 @@ export default function EditarCard(props) {
         preLoaderOn(true);
         const datosCard = await traerUnaImagen(id);
         preLoaderOn(false);
-        if (datosCard) { setDataForm(datosCard); }
+        if (datosCard) {
+            setDataForm(datosCard)
+            if (datosCard.adjuntos && datosCard.adjuntos.length > 0) { setAdjuntos(datosCard.adjuntos) }
+            ;
+        }
     }
 
     useEffect(() => {
@@ -35,10 +40,18 @@ export default function EditarCard(props) {
         setDataForm({ ...dataForm, [e.target.name]: e.target.value });
     }
 
+    function handlerAdjunto(e, i) {
+        const adjuntosProvisorio = [...adjuntos]
+        adjuntosProvisorio[i] = e.target.value;
+        setAdjuntos(adjuntosProvisorio);
+    };
+
     async function guardarCambios(evento) {
         evento.preventDefault();
+        const imagenEditada = { ...dataForm }
+        imagenEditada.adjuntos = JSON.stringify(adjuntos);
         preLoaderOn(true);
-        const resultadoOp = await editarImagen(id, dataForm, autorizacion);
+        const resultadoOp = await editarImagen(id, imagenEditada, autorizacion);
         preLoaderOn(false);
         if (resultadoOp) {
             preLoaderOn(true);
@@ -58,6 +71,18 @@ export default function EditarCard(props) {
     let zonaPreLoader;
     if (statePreLoader) { zonaPreLoader = preLoader };
 
+    const listaAdjuntos = adjuntos.map((elem, i) => {
+        return (
+            <div key={i} className="d-flex" >
+                <Input className="my-3" type="textarea" name="adjuntos" value={elem} onChange={(e) => handlerAdjunto(e, i)} />
+                <Button className="m-2 align-self-center" color="danger" onClick={() => {
+                    let adjuntosProvisorio = [...adjuntos];
+                    adjuntosProvisorio = adjuntosProvisorio.filter((_, elemIndex) => { return elemIndex !== i })
+                    setAdjuntos(adjuntosProvisorio)
+                }}>X</Button>
+            </div>)
+    })
+
     return (
         <>
             <h2>Editar imagen</h2>
@@ -75,6 +100,17 @@ export default function EditarCard(props) {
                     <FormGroup>
                         <Label>URL de imagen</Label>
                         <Input className="my-3" type="textarea" name="url" value={dataForm.url} onChange={handler} required />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label>
+                            URL de adjuntos (Instagram, etc.)
+                        </Label>
+                        <Button className="mt-3 w-100" color="info" onClick={() => {
+                            const adjuntosProvisorio = [...adjuntos];
+                            adjuntosProvisorio.push("");
+                            setAdjuntos(adjuntosProvisorio)
+                        }}>Agregar nuevo adjunto</Button>
+                        {listaAdjuntos}
                     </FormGroup>
                     <Button type="submit" className="mt-3" color="primary" size="lg">Guardar cambios</Button>
                     <Button className="mt-3" color="primary" size="lg" onClick={volverAtras}>Cancelar</Button>

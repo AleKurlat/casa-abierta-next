@@ -19,12 +19,13 @@ async function handler(req, res) {
     }
     if (req.method === 'PUT') {
         try {
-            if (!req.body.nombre || !req.body.url || !req.body.descripcion) {
+            const { nombre, url, descripcion, adjuntos } = req.body;
+            if (!nombre || !url || !descripcion) {
                 res.statusCode = 400;
                 throw new Error("Todos los campos deben contener información");
             }
 
-            let respuesta = await modelGaleria.editarImagen(req.body.nombre, req.body.url, req.body.descripcion, id);
+            let respuesta = await modelGaleria.editarImagen(nombre, url, descripcion, id, adjuntos);
 
             if (respuesta == 0) {
                 res.statusCode = 400;

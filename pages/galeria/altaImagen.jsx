@@ -80,12 +80,12 @@ export default function AltaImagen(props) {
                         <Label>
                             URL de adjuntos (Instagram, etc.)
                         </Label>
-                        {listaAdjuntos}
                         <Button className="mt-3 w-100" color="info" onClick={() => {
                             const adjuntosProvisorio = [...adjuntos];
                             adjuntosProvisorio.push("");
                             setAdjuntos(adjuntosProvisorio)
                         }}>Agregar nuevo adjunto</Button>
+                        {listaAdjuntos}
                     </FormGroup>
                     <Button type="submit" className="mt-3" color="primary" size="lg">Guardar imagen</Button>
                     <Link href="/galeria/galeria#principal" passHref ><Button className="mt-3" color="primary" size="lg">Cancelar</Button></Link>

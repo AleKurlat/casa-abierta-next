@@ -20,10 +20,10 @@ export async function traerUnaImagen(id) {
         [id]);
     return respuesta.rows[0];
 }
-export async function editarImagen(nombre, url, descripcion, id) {
+export async function editarImagen(nombre, url, descripcion, id, adjuntos) {
     let respuesta = await pool.query(
-        "UPDATE galeria SET nombre = $1, url = $2, descripcion = $3 WHERE id = $4",
-        [nombre, url, descripcion, id]);
+        "UPDATE galeria SET nombre = $1, url = $2, descripcion = $3, adjuntos = $5 WHERE id = $4",
+        [nombre, url, descripcion, id, adjuntos]);
     return respuesta.rowCount;
 }
 export async function borrarImagen(id) {
