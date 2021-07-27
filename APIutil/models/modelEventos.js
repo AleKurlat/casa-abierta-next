@@ -2,10 +2,10 @@
 
 import { pool } from "../conexionPG";
 
-export async function postearEvento(nombre, descripcion, imagen_url, fecha) {
+export async function postearEvento(nombre, descripcion, imagen_url, fecha, adjuntos) {
     let respuesta = await pool.query(
-        "INSERT INTO eventos (nombre, descripcion, imagen_url, fecha) VALUES ($1, $2, $3, $4) RETURNING *",
-        [nombre, descripcion, imagen_url, fecha]);
+        "INSERT INTO eventos (nombre, descripcion, imagen_url, fecha, adjuntos) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+        [nombre, descripcion, imagen_url, fecha, adjuntos]);
     return respuesta.rows;
 }
 export async function traerEventos() {

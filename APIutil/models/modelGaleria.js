@@ -2,10 +2,10 @@
 
 import { pool } from "../conexionPG";
 
-export async function postearImagen(nombre, url, descripcion) {
+export async function postearImagen(nombre, url, descripcion, adjuntos) {
     let respuesta = await pool.query(
-        "INSERT INTO galeria (nombre, url, descripcion) VALUES ($1, $2, $3) RETURNING *",
-        [nombre, url, descripcion]);
+        "INSERT INTO galeria (nombre, url, descripcion, adjuntos) VALUES ($1, $2, $3, $4) RETURNING *",
+        [nombre, url, descripcion, adjuntos]);
     return respuesta.rows;
 }
 export async function traerImagenes() {

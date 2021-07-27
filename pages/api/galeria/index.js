@@ -13,12 +13,13 @@ async function handler(req, res) {
     }
   }
   if (req.method === 'POST') {
+    const { nombre, url, descripcion, adjuntos } = req.body;
     try {
-      if (!req.body.nombre || !req.body.url || !req.body.descripcion) {
+      if (!nombre || !url || !descripcion) {
         res.statusCode = 400;
         throw new Error("Es necesario completar todos los campos");
       }
-      let respuesta = await modelGaleria.postearImagen(req.body.nombre, req.body.url, req.body.descripcion);
+      let respuesta = await modelGaleria.postearImagen(nombre, url, descripcion, adjuntos);
 
       res.send(respuesta);
     }

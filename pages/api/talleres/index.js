@@ -15,11 +15,12 @@ async function handler(req, res) {
 
   if (req.method === 'POST') {
     try {
-      if (!req.body.nombre || !req.body.descripcion || !req.body.talleristas || !req.body.horarios || !req.body.imagen_url) {
+      const { nombre, descripcion, talleristas, horarios, imagen_url, adjuntos } = req.body;
+      if (!nombre || !descripcion || !talleristas || !horarios || !imagen_url) {
         res.statusCode = 400;
         throw new Error("Es necesario completar todos los campos");
       }
-      let respuesta = await modelTalleres.postearTaller(req.body.nombre, req.body.descripcion, req.body.talleristas, req.body.horarios, req.body.imagen_url, req.body.adjuntos);
+      let respuesta = await modelTalleres.postearTaller(nombre, descripcion, talleristas, horarios, imagen_url, adjuntos);
 
       res.send(respuesta);
     }

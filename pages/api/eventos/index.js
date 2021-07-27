@@ -14,11 +14,12 @@ async function handler(req, res) {
   }
   if (req.method === 'POST') {
     try {
-      if (!req.body.nombre || !req.body.descripcion || !req.body.imagen_url || !req.body.fecha) {
+      const { nombre, descripcion, imagen_url, fecha, adjuntos } = req.body;
+      if (!nombre || !descripcion || !imagen_url || !fecha) {
         res.statusCode = 400;
         throw new Error("Es necesario completar todos los campos");
       }
-      let respuesta = await modelEventos.postearEvento(req.body.nombre, req.body.descripcion, req.body.imagen_url, req.body.fecha);
+      let respuesta = await modelEventos.postearEvento(nombre, descripcion, imagen_url, fecha, adjuntos);
 
       res.send(respuesta);
     }
